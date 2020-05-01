@@ -1,26 +1,24 @@
-class MenusController < ApplicationController
-  skip_before_action :verify_authenticity_token
 
-  def new
-  end
+class MenusController < ApplicationController
+  # created by cmd
+  # rails generate controller Menus
 
   def index
+    @menus = Menu.order(:name)
+    @order = current_user.orders.being_created
+  end
+
+  def show
   end
 
   def create
-    name = params[:name]
-    Menu.create!(
-      name: name,
-    )
-    redirect_to menus_path
+    menu = Menu.create!(name: params[:name].capitalize)
+    render plain: "created #{menu.name} with #{menu.id}"
   end
 
   def destroy
     ensure_owner_logged_in
-    id = params[:id]
-    menu = Menu.find(id)
-    menu_items = MenuItem.all.where("menu_id= ?", id)
-    menu_items.map { |menu_item| menu_item.destroy }
+    menu = Menu.find(params[:id])
     menu.destroy
     redirect_to menus_path
   end
