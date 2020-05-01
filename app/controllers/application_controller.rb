@@ -2,9 +2,26 @@ class ApplicationController < ActionController::Base
   before_action :ensure_user_logged_in
 
   def ensure_user_logged_in
-    #unless current_user
-      #redirect_to root_path
-    #end
+    unless current_user
+    end
+  end
+
+  def ensure_owner_logged_in
+    unless current_user.is_owner?
+      redirect_to menus_path
+    end
+  end
+
+  def ensure_clerk_logged_in
+    unless current_user.is_clerk?
+      redirect_to menus_path
+    end
+  end
+
+  def ensure_owner_or_clerk_logged_in
+    unless current_user.is_clerk? || current_user.is_owner?
+      redirect_to menus_path
+    end
   end
 
   def current_user

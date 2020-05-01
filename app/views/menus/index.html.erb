@@ -1,8 +1,10 @@
-<%= render partial: "menu-name" , locals:
-       {
-        menus: Menu.all
-       }%>
-<form action ="/menus" method="post">
-   <input type ="text" name="name">
-   <input type="submit" value="add">
-</form>
+
+<%= render partial: "search-addItem" %>
+  <div class="walk-in-header">
+    <h3>
+      Order for walk-in customer
+    </h3>
+  </div>
+<div class="menu-menuItems">
+  <%= render partial: "menuList" %>
+</div>
