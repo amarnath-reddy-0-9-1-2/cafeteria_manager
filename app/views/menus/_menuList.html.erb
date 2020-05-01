@@ -5,7 +5,7 @@
         <% if @current_user.is_owner? %>
           <span class="menuItem-delete">
             <%= link_to menu, method: :delete, data: {confirm: 'Are you sure?'} do %>
-              <%= image_tag "trash-can-outline.svg" %>
+              <%= image_tag "trash.png" %>
             <% end %>
           </span>
         <% end %>

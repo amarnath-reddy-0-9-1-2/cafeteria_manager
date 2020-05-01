@@ -1,3 +1,4 @@
+
 <div class="cafeteria-menuItems">
   <% @menus.each do |menu| %>
     <ul class="menuItems-list">
@@ -10,8 +11,10 @@
             <%= menu_item.name %>
             <span class="item-rating">
               <% menu_item.ratings.to_i.times do %>
+                <%= image_tag "rated-star-16.png" %>
               <% end %>
               <% (5-menu_item.ratings.to_i).times do %>
+                <%= image_tag "star-16.png" %>
               <% end %>
             </span>
             <span class="menuItem-details">
@@ -22,10 +25,10 @@
             </span>
           </p>
           <p class="orderItem-updateItem">
-
+            <% if @current_user.is_owner? %>
               <p class="each-menuItem-delete">
                 <%= link_to edit_menu_item_path(id: menu_item.id) do %>
-
+                  <%= image_tag "edit-26.png", class: "TodoSection-todoDelete" %>
                 <% end %>
                 <%= link_to menu_item, method: :delete, data: {confirm: 'Are you sure?'} do %>
                   <%= image_tag "trash.png" %>
