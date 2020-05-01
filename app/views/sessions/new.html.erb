@@ -1,0 +1,15 @@
+<main class="Main-Page">
+  <main class="Login-setup">
+    <%= form_with url: session_path, class: "login-form" do |f| %>
+      <p class="Login/Signup">
+         Welcome User
+        <%=link_to "Sign Up here", new_user_path, class: "Link for Signup" %>
+      </p>
+      <%= f.email_field :email, placeholder: "Email"%>
+      <br>
+      <%= f.password_field :password,placeholder: "Password",autofocus:"autofocus"%>
+      <br>
+      <%= f.submit "Log in" , class: "Login-button" %>
+    <% end %>
+  </main>
+</main>
