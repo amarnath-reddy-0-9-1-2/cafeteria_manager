@@ -16,12 +16,12 @@ class MenusController < ApplicationController
   end
 
   def destroy
-   id = params[:id]
-   menu = Menu.find(id)
-   menu_items = MenuItem.all.where("menu_id= ?",id)
-   menu_items.map{|menu_item| menu_item.destroy}
-   menu.destroy
-   redirect_to menus_path
- end
-
+    ensure_owner_logged_in
+    id = params[:id]
+    menu = Menu.find(id)
+    menu_items = MenuItem.all.where("menu_id= ?", id)
+    menu_items.map { |menu_item| menu_item.destroy }
+    menu.destroy
+    redirect_to menus_path
+  end
 end
