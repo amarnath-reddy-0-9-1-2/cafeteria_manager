@@ -17,8 +17,8 @@ class Order < ApplicationRecord
     where("status= ?", "order_confirmed")
   end
 
-  def self.under_process
-    where("status= ?", "under_process").first
+  def self.being_created
+    where("status= ?", "being_created").first
   end
 
   def order_status
