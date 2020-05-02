@@ -1,0 +1,114 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+body{
+  font-family: sans-serif;
+}
+
+.NavigationBar{
+  display: flex;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.NavigationBar-title{
+  margin: 5px;
+  padding: 5px;
+  color: rgba(34, 33, 33, 0.877);
+  font-weight: bold;
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  color: red;
+}
+.NavigationBar-title img{
+  padding: 5px;
+}
+.NavigationBar-buttons{
+  align-items: left;
+  margin-left:auto ;
+  display: none;
+}
+
+.Buttons-container {
+  align-items: left;
+  margin-left:auto ;
+  margin-top: 150px;
+}
+.NavigationBar-button{
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 5px;
+  padding: 5px;
+}
+
+.NavigationBar-indexbutton {
+  align-items: left;
+  margin-left: auto;
+  margin-right: 40px;
+  color: lightgreen;
+
+}
+
+.Buttons-container:hover .NavigationBar-buttons {
+  display: inline-block
+}
+
+.NavigationBar-button > a{
+  text-decoration: none;
+  color: rgba(24, 23, 23, 0.842);
+  font-family: sans-serif;
+  margin-right: 5px;
+  text-align: center;
+  padding: 5px;
+}
+.NavigationBar-button > a:hover{
+  color: crimson;
+}
+.notice , .alert,#error_text{
+  font-family: sans-serif;
+  max-width: 50%;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+  color: red;
+  font-size: 20px;
+}
+#error_text h2{
+  font-size: 21px;
+  font-weight: bold;
+}
+.Warning-text{
+  text-align: left;
+}
+.Home-page{
+  font-family: sans-serif;
+  padding: 8px;
+  text-align: center;
+  color: rgba(255, 68, 0, 0.904);
+}
+.Order-button{
+  margin: 5px auto;
+  text-align: center;
+}
+.Order-button > a{
+  font-size: 26px;
+  font-family: sans-serif;
+  text-decoration: none;
+  background-color: rgba(255, 68, 0, 0.904);
+  color: white;
+  padding:10px;
+  border-radius: 5px;
+  border: 2px solid transparent;
+}
+
+.NavigationBar-logo {
+  display: inline-flex;
+  align-items: center;
+}
+.About-text {
+  color: rgb(29, 221, 29);
+  margin-left: 75px;
+  margin-bottom: 50px;
+}

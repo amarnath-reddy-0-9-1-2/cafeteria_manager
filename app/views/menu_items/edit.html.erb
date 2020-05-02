@@ -1,9 +1,9 @@
 
-<main class="signUpBox">
-  <p class="signUp-login">
+<main class="SignUp-page">
+  <p class="Get-in">
     Edit item
   </p>
-  <%= form_with url: menu_item_path, method: :patch, class: "signUp-form" do |form| %>
+  <%= form_with url: menu_item_path, method: :patch, class: "SignUp-content" do |form| %>
     <%= form.text_field :name,
                         placeholder: "Item Name",
                         value: @menu_item.name,
@@ -13,7 +13,7 @@
     <%= form.number_field :price,
                           placeholder: "Price",
                           value: @menu_item.price,
-                          class: "edit-item-price",
+                          class: "Item-pricechange",
                           autofocus:"autofocus"
     %>
     <br>
@@ -27,6 +27,6 @@
                         placeholder: "Menu Name"
     %>
     <br>
-    <%= form.submit "Update", data: { "disable-with": "Updating..." }, class: "signUp-button"%>
+    <%= form.submit "Update", data: { "disable-with": "Updating..." }, class: "SignUp-button"%>
   <%end%>
 </main>

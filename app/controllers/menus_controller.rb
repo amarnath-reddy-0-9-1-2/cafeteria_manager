@@ -5,7 +5,7 @@ class MenusController < ApplicationController
 
   def index
     @menus = Menu.order(:name)
-    @order = current_user.orders.being_created
+    @order = current_user.orders.under_process
   end
 
   def show

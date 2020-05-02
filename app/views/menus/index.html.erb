@@ -1,14 +1,14 @@
-<%= render partial: "search-addItem" %>
+<%= render partial: "search" %>
 <% if @current_user.is_clerk? || @current_user.is_owner? %>
-  <div class="walk-in-header">
+  <div class="WalkIn-costumer">
     <h3>
-      <%= image_tag "walk-in3.png" %>
+      <%= image_tag "costumer.png" %>
       Order for walk-in customer
-      <%= image_tag "walk-in3.png" %>
+      <%= image_tag "costumer.png" %>
     </h3>
   </div>
 <% end %>
-<div class="menu-menuItems">
-  <%= render partial: "menuList" %>
-  <%= render partial: "menu_items/menuItems-list" %>
+<div class="Main-menuitems">
+  <%= render partial: "menu" %>
+  <%= render partial: "menu_items/menulist" %>
 </div>

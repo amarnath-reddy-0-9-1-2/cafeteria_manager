@@ -1,9 +1,6 @@
-<main class="signUpBox">
-  <%= form_with url: session_path, class: "signUp-form" do |f| %>
-    <p class="signUp-login">
-      New to Cafeteria
-      <%= link_to "Sign Up here", new_user_path, class: "signUp-link" %>
-    </p>
+<main class="SignUp-page">
+  <%= form_with url: session_path, class: "SignUp-content" do |f| %>
+
     <%= f.email_field :email,
                          placeholder: "Email",
                          autofocus:"autofocus"
@@ -14,8 +11,11 @@
                             autofocus:"autofocus"
       %>
     <br>
-    <%= f.submit "Log in",data: { "disable-with": "Logging in..." } , class: "login-button" %>
-    <a href="" class="forgot-password"> Forgot your password?</a>
+    <%= f.submit "Log in",data: { "disable-with": "Logging in..." } , class: "Login-button" %>
+       <p class="Get-in">
+         New User!
+      <%= link_to "Sign Up here", new_user_path, class: "SignUp-link" %>
+    </p>
   <% end %>
 </main>
 </main>

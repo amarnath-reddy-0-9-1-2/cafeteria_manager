@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = current_user.orders.being_created
+    @order = current_user.orders.under_process
     if @order.order_items.empty?
       redirect_to(cart_path, alert: "Order must have atleast 1 item")
     else
@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
   end
 
   def cart
-    @order = current_user.orders.being_created
+    @order = current_user.orders.under_process
   end
 
   def all_orders

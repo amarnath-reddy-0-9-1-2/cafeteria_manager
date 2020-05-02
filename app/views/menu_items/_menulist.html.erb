@@ -1,0 +1,58 @@
+
+<div class="MenuItem-box">
+  <% @menus.each do |menu| %>
+    <ul class="menuItems">
+      <h3 class="Menu-name" id=<%= menu.name %>>
+        <%= menu.name %>
+      </h3>
+      <% menu.menu_items.order(:name).each do |menu_item| %>
+        <li class="MenuItem">
+          <p>
+            <%= menu_item.name %>
+            <span class="MenuItem-rating">
+              <% menu_item.ratings.to_i.times do %>
+                <%= image_tag "starsfull.png" %>
+              <% end %>
+              <% (5-menu_item.ratings.to_i).times do %>
+                <%= image_tag "stars.png" %>
+              <% end %>
+            </span>
+            <span class="MenuItem-details">
+              <span class="MenuItem-price">
+                ₹<%= menu_item.price %>
+              </span>
+              <span class="MenuItem-description"> <%= menu_item.description %> </span>
+            </span>
+          </p>
+          <p class="UpdateItem">
+            <% if @current_user.is_owner? %>
+              <p class="MenuItem-deleteone">
+                <%= link_to edit_menu_item_path(id: menu_item.id) do %>
+                  <%= image_tag "edit.png", class: "Delete-icon" %>
+                <% end %>
+                <%= link_to menu_item, method: :delete, data: {confirm: 'Are you sure?'} do %>
+                  <%= image_tag "trash.png" %>
+                <% end %>
+              </p>
+            <% end %>
+            <p class="OrderItem-add">
+              <% if @order %>
+                <% if @order.order_items.get_order_item(menu_item.id).exists? %>
+                  <%= link_to "-",order_items_path(id: @order.order_item(menu_item.name).id),{:method => :delete}%>
+
+                  <%= @order.order_items.get_order_item(menu_item.id).count %>
+                  <%= link_to "+",order_items_path(menu_item_id: menu_item.id ),{:method => :post}%>
+
+                <% else %>
+                  <%=link_to "Add to cart",order_items_path(menu_item_id: menu_item.id ),{:method => :post} %>
+                <% end %>
+              <% else %>
+                  <%=link_to "Add to cart",order_items_path(menu_item_id: menu_item.id ),{:method => :post}%>
+              <% end %>
+            </p>
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
