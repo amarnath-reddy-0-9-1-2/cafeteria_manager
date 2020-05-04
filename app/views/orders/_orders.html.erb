@@ -49,9 +49,11 @@
       <section class="Order-section" id="Order-details">
           <div class="Order-sub"> Billing </p>
          <div class="Order-calculation" >
-          <%order.all_menu_item_names.uniq.each do |menu_item| %>
-                <%=menu_item%> x <%=order.all_menu_item_names.count(menu_item).to_s%> =
-                <%=order.order_items.get_menu_item_price(menu_item)*order.all_menu_item_names.count(menu_item)%>
+          <% order.all_menu_item_names.uniq.each do |menu_item| %>
+             <div class="Each-calculation">
+                <%= menu_item %> x <%=order.all_menu_item_names.count(menu_item).to_s %> =
+                <%= order.order_items.get_menu_item_price(menu_item)*order.all_menu_item_names.count(menu_item) %>
+             </div>
           <% end %>
          </div>
       </section>

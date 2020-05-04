@@ -7,9 +7,12 @@ class OrdersController < ApplicationController
   end
 
   def show
-   ensure_owner_logged_in
-   if @current_user
-   end
+    @order = Order.find(params[:id])
+    @user = User.find(@order.user_id)
+    if @user.id == @current_user.id
+    else
+      ensure_owner_logged_in
+    end
   end
 
   def pending_orders
@@ -23,6 +26,7 @@ class OrdersController < ApplicationController
     else
       @order.status = "order_confirmed"
       @order.date = Time.now + 19800
+      @order.ordered_at = Time.now + 19800
       @order.save!
       flash[:notice] = "Order recived! Soon your order will be delivered"
       redirect_to menus_path

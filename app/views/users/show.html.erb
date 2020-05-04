@@ -2,6 +2,7 @@
 <div class="Profile-image"><%= image_tag "user.png" %></div>
 <div class="Welcome-msg">Welcome  <%=@current_user.name%></div>
 <div class="Details-block">
+<div class="Details">Id : <%=@current_user.id%></div>
 <div class="Details">Full Name : <%=@current_user.name%></div>
 <div class="Details">Email id : <%=@current_user.email%></div>
 <div class="Details">Your orders : <%=@current_user.orders.count%></div>

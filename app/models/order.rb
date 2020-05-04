@@ -1,4 +1,3 @@
-
 class Order < ApplicationRecord
   # created by cmd
   # rails generate model MenuItems date:datetime user_id:integer delivered_at:datetime
@@ -9,15 +8,18 @@ class Order < ApplicationRecord
     order_items.where(menu_item_name: menu_item_name).first
   end
 
+
   def all_menu_item_names
     order_items.order(:menu_item_name).map { |item| item.menu_item_name }
+  end
+
+  def get_number_of_items(order_item)
+    order_items.where(id: order_item.id).count
   end
 
   def self.get_order_by_id(id)
     order = all.where("id = ?", id).exists? ? find(id) : false
   end
-
-
 
   def self.under_process
     where("status= ?", "Under Process").first
@@ -50,6 +52,4 @@ class Order < ApplicationRecord
     order_items.each { |item| price = price + item.menu_item_price }
     price
   end
-
-
 end
