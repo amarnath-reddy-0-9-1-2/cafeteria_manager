@@ -1,83 +1,72 @@
-.Cart{
-  max-width: 50%;
-  margin: 5px auto;
-  font-family: sans-serif;
+.CartItem {
+  display: inline-flex;
+  border-top: 1px dotted black;
+  padding: 10px;
+  margin: 10px;
+  color: black;
 }
 .CartItem-price {
-  width: 70%;
-  margin: 5px auto;
-}
-.CartItem-price > ul{
-  border-top: 1px dotted gray;
-  border-bottom: 1px dotted gray;
-}
-.Cart-title{
-  text-align: center;
-}
-.Price-total{
-  margin-left: auto;
-  padding: 5px;
-  font-family: sans-serif;
-}
 
-.Cart-item{
-  display: flex;
   align-items: center;
+}
+.CartItem-name {
+  font-size: 25px;
+}
+.Cart-heading {
+  max-width: 100px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+.CartItems {
+  border-bottom: 1px solid black;
+}
+.CartItem-quantity {
+  font-size: 25px;
+  margin-left: 60px;
+  display: flex;
+}
+.CartItem-subtotal {
+  font-size: 25px;
+  margin-left: 60px;
+}
+.CartItem-update {
+  margin-left: 7px;
   padding: 5px;
-  margin-left: 5px;
-}
-.Cart-item > span{
-  font-size: 18px;
-  color: rgb(49, 49, 49);
-}
-.CartItem-title{
-   display: flex;
-   align-items: center;
-   padding: 5px;
-}
+  border-radius: 4px;
+  background-color: lightgreen;
 
-.Cart-total{
-  display: flex;
-  align-items: center;
-  padding: 5px;
 }
-.Cart-exit{
-  width:300px;
-  display: flex;
+.Cart {
   align-items: center;
-  margin: 8px auto;
-  border: 2px solid transparent;
-  font-size: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+
+}
+.Cart-total {
+  font-size: 28px;
+  margin: 0 auto;
+  max-width: 1000px;
+  margin-top: 10px;
+  display: inline-flex;
+  margin-left: 700px;
+  color: brown;
+}
+.Cart-submit {
+  background-color: crimson;
+  max-width: 300px;
   color: white;
-  background-color: #a13cf9;
-  border-radius: 5px;
-  padding: 8px;
-}
-.Cart-empty{
-  text-align: center;
-  margin: 8px;
-  padding: 8px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-.CartItem > .total-price{
-  display: flex;
+  padding: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top: 25px;
+  border-radius: 8px;
+  margin-left: 400px;
+  font-size: 25px;
   align-items: center;
 }
-.CartItem-add{
-  padding: 5px;
-  border: 1px dotted #a13cf9;
-  font-size: 18px;
-  margin-right: 10px;
-  color: #a13cf9;
-  display: flex;
-  align-items: center;
-}
-.CartItem-add > a{
-  padding: 0 8px;
-}
-.Quantity{
-  width:70px;
-}
-.CartItem-add > a{
-  color: #a13cf9;
+.Cart-empty {
+  max-width: 200px;
+  margin: 0 auto;
+  font-size: 25px;
+  color: orangered;
 }

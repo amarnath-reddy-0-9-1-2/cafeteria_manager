@@ -8,6 +8,9 @@
   max-width: 70%;
   margin: 5px auto;
 }
+.Clerks {
+  margin-top: 60px;
+}
 
 table {
   margin-top: 20px;
@@ -15,8 +18,7 @@ table {
   border-collapse: collapse;
   width: 100%;
   border-radius: 8px;
-  -webkit-box-shadow: -1px 1px 5px 9px grey;
-  box-shadow: -1px 1px 5px 9px grey;
+  border: 1px solid black;
 }
 
 td, th {
@@ -26,14 +28,11 @@ td, th {
 th{
   font-size: 21px;
   font-size: bold;
-  border-bottom:2px solid grey ;
+  border-bottom:2px solid black ;
 }
 td{
   font-size: 18px;
   border-bottom: 1px dotted grey;
-}
-.User-list:hover{
-  background-color: rgb(226, 224, 224);
 }
 .User-list > td{
   padding: 10px;
@@ -41,22 +40,52 @@ td{
 .Header-table{
   text-align: center;
   font-size: 26px;
-  background-color: #6f7bd9;
+  background-color:coral;
   color: white;
   font-weight: bold;
-  border-radius: 8px 8px 0 0;
 }
 .User-list >td a{
-  color: rgb(59, 59, 175);
+  color: blue;
 }
 .User-list >td a:hover{
-  color: rgba(255, 68, 0, 0.904);
-}
-.User-list:target{
-  animation: user 15s 1;
+  color: red;
 }
 @keyframes User{
   0%{border-top: 2px solid tomato;border-bottom: 2px solid tomato;}
   99%{border-top: 2px solid tomato;border-bottom: 2px solid tomato;}
   100%{border: 1px dotted grey;}
+}
+
+.Profile-block {
+  max-width: 600px;
+  margin: 0 auto;
+  align-items: center;
+}
+.Profile-image {
+  text-align: center;
+}
+.Welcome-msg {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 20px;
+  color: green;
+}
+.Details {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 25px;
+}
+.Details-block {
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 6px;
+  border: 1px solid black;
+  -webkit-box-shadow: -1px 1px 5px 9px grey;
+  box-shadow: -1px 1px 5px 9px grey;
+}
+
+.Details-edit {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 35px;
 }

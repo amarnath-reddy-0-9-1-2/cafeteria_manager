@@ -8,6 +8,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    unless current_user
+      redirect_to root_path
+    end
+  end
+
+  def edit
+    unless current_user
+      redirect_to root_path
+    end
+  end
+
   def index
     ensure_owner_logged_in
     @clerks = User.clerks
@@ -18,15 +30,42 @@ class UsersController < ApplicationController
     name = params[:name]
     email = params[:email]
     password = params[:password]
-
-    user = User.new(name: name.capitalize, email: email, role: "customer", password: password)
-    if user.save
-      user.save!
-      session[:current_user_id] = user.id
-      redirect_to menus_path
+    password_confirmation = params[:password_confirmation]
+    if password == password_confirmation
+      user = User.new(name: name.capitalize, email: email, role: "customer", password: password)
+      if user.save
+        user.save!
+        session[:current_user_id] = user.id
+        redirect_to menus_path
+      else
+        flash[:error] = user.errors.full_messages
+        redirect_to new_user_path
+      end
     else
-      flash[:error] = user.errors.full_messages
+      flash[:alert] = "New passwords doesnt match"
       redirect_to new_user_path
+    end
+  end
+
+  def update
+    def update
+      user = current_user
+      password = params[:password]
+      password_confirmation = params[:password_confirmation]
+      current_password = params[:current_password]
+      if user.authenticate(current_password)
+        if password == password_confirmation
+          flash[:alert] = "Password updated successfully"
+          user.update!(password: password)
+          redirect_to user_path
+        else
+          flash[:alert] = "New passwords doesnt match"
+          redirect_to edit_user_path
+        end
+      else
+        flash[:alert] = "Your current password is incorrect"
+        redirect_to edit_user_path
+      end
     end
   end
 end

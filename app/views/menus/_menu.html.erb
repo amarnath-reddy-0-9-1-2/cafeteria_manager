@@ -1,15 +1,16 @@
 <div class="Menu-page">
-  <ul>
-    <% @menus.each do |menu| %>
-      <li class="Menu">
-        <% if @current_user.is_owner? %>
-          <span class="MenuItem-delete">
-            <%= link_to menu, method: :delete, data: {confirm: 'Are you sure?'} do %>
-              <%= image_tag "trash.png" %>
+   <p class="Menulist-Heading">Menus-List</p>
+  <ul class="Menus-list">
+     <% @menus.each do |menu| %>
+    <li class="Menu">
+          <div class="MenuItem-delete">
+            <%=menu.name%>
+           <% if @current_user.is_owner? %>
+            <%= link_to menu, method: :delete do %>
+              <div class="Menu-trash"><%= image_tag "delete.png"%></div>
             <% end %>
-          </span>
-        <% end %>
-        <a href=<%= "##{menu.name}" %>><%= menu.name %></a>
+           <%end%>
+          </div>
       </li>
     <% end %>
   </ul>

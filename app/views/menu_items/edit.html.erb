@@ -1,7 +1,7 @@
 
 <main class="SignUp-page">
   <p class="Get-in">
-    Edit item
+    Edit Here!!
   </p>
   <%= form_with url: menu_item_path, method: :patch, class: "SignUp-content" do |form| %>
     <%= form.text_field :name,
@@ -27,6 +27,6 @@
                         placeholder: "Menu Name"
     %>
     <br>
-    <%= form.submit "Update", data: { "disable-with": "Updating..." }, class: "SignUp-button"%>
+    <%= form.submit "Update", class: "SignUp-button"%>
   <%end%>
 </main>

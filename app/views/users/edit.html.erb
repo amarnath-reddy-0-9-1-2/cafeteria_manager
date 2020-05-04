@@ -1,0 +1,26 @@
+
+<main class="Update-box">
+  <h2 class=Change-text>
+    Change your password
+  </h2>
+  <%= form_with url: user_path, method: :put,id: "edit_user" do |form| %>
+    <%= form.password_field :password,
+                             placeholder: "Password",
+                             autofocus:"autofocus"
+    %>
+    <br>
+      <%= form.password_field :password_confirmation,
+                             placeholder: "Conifrm new Password",
+                             autofocus: true
+    %>
+    <br>
+    <br>
+    <%= form.password_field :current_password,
+                             placeholder: "Current Password",
+                             autofocus: "autofocus"
+    %>
+    <br>
+
+    <%= form.submit "Update",class:"Change-button" %>
+  <% end %>
+</main>

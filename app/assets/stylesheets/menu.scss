@@ -1,28 +1,36 @@
 .WalkIn-costumer{
-  max-width: 70%;
+  max-width: 100%;
   margin: 5px auto;
+  margin-right: 100px;
 }
 .WalkIn-costumer > h3{
   text-align: center;
   color: rgba(94, 121, 185, 0.91);
 }
 .Main-menuitems{
-  max-width: 70%;
+  max-width: 100%;
   margin: 0 auto;
-  display: flex;
   font-family: sans-serif;
 }
+.Menu-trash {
+  display: none;
+  padding-left: 30px;
+}
+
+
 .Menu-page{
   width: 25%;
   margin: 5px;
-  border-right: 2px dotted rgba(197, 194, 194, 0.966);
+  margin-left: 100px;
+  margin-top: 50px;
 }
 .Menu-name{
   margin: 5px;
   padding: 5px;
   font-weight: bold;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: sans-serif;
   color: rgba(0, 0, 0, 0.849);
+  border-bottom: 1px solid black;
 }
 h3.Menu-name:target{
   animation: menuHighlight 15s 1;
@@ -50,17 +58,17 @@ h3.Menu-name:target{
   font-family: sans-serif;
 }
 .MenuItem-box{
-  width: 75%;
-  margin: 0 auto;
+  width: 100%;
+  padding-top: 40px;
+  margin-right: 100px;
 }
-.MenuItems{
-  border-bottom: 3px solid black;
+.MenuItem{
+  border-bottom: 1px dotted grey;
 }
 .MenuItem > p{
   padding: 5px;
 }
 .MenuItem:hover{
-  background-color: #e7e7eb;
   border-radius: 10px;
 }
 
@@ -70,9 +78,10 @@ h3.Menu-name:target{
   }
 
   .OrderItem-add{
-   border: 1px solid #a13cf9;
-   color: #a13cf9;
+   color: white;
+   background-color: crimson;
    padding: 8px;
+   border-radius: 4px;
   }
 
  .MenuItem-details{
@@ -83,19 +92,26 @@ h3.Menu-name:target{
  }
  .MenuItem-price{
    max-width: 35px;
-   color: #535665;
+   color: green;
+   font-size: 25px;
+   margin-left: 20px;
  }
  .OrderItem-add > a{
-  color: #a13cf9;
+  color: white;
   width: 20px;
   padding: 5px;
  }
 
  .MenuItem-delete{
-   display: none;
-   margin-left: 10px;
+   margin: 10px;
+   display: inline-flex;
+   padding: 7px;
+   border-radius: 4px;
  }
-.Menu:hover > .menuItem-delete{
+ .MenuItem-delete:hover {
+     background-color: rgb(176, 223, 241);
+ }
+.MenuItem-delete:hover .Menu-trash {
   display: inline-block;
 }
 .MenuItem-deleteone{
@@ -110,17 +126,31 @@ h3.Menu-name:target{
   display: inline-block;
 }
 .MenuItem-description{
-  font-size: 15px;
+  font-size: 22px;
   margin-left:25px;
   padding: 5px;
-  color:#7e808c;
-  border-left: 1px dotted black;
+  color: blue;
 }
-.Menuitem-rating{
+.MenuItem-rating{
   padding: 3px;
-  margin-left: 5px;
+  margin-left: 20px;
+  font-size: 25px;
+  display: inline-flex;
+}
+.MenuItem-name {
+  font-size: 25px;
+  color: orangered;
+}
+.Menulist-Heading {
+  font-size: 30px;
+  font-weight: 300px;
+  color: black;
+  margin-bottom: 10px;
 }
 
+.Main-content {
+  display: flex;
+}
 
 @keyframes MenuHighlight{
   0%{background-color: #a13cf9;color: white;}

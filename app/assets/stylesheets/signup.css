@@ -6,15 +6,17 @@
   max-width: 500px;
   margin: 20px auto;
   border: transparent;
-  border-radius: 5px;
+  border-radius: 13px;
   margin: 0 auto;
   padding: 30px;
+  border: 1px solid black;
+  text-align: center;
 }
 
 .Get-in{
   margin: 25px 0;
   text-align: center;
-  font-size: 20px;
+  font-size: 30px;
   padding: 10px
 }
 
@@ -50,4 +52,32 @@
   font-size: 20px;
   padding: 5px;
 
+}
+
+.Update-box {
+max-width: 500px;
+margin: 20px auto;
+border: transparent;
+border-radius: 5px;
+margin: 0 auto;
+padding: 30px;
+text-align: center;
+}
+
+.Change-button {
+  margin-top: 30px;
+  padding: 10px;
+  background-color: crimson;
+  color: white;
+  border-radius: 8px;
+  font-size: 25px;
+}
+.Change-text {
+  margin: 25px 0;
+  text-align: center;
+  font-size: 40px;
+  padding: 10px
+}
+.Sign-heading {
+  margin-bottom: 30px;
 }

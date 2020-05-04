@@ -1,13 +1,5 @@
 
 <div class="Orders">
-  <% content_for :search do %>
-    <div class="Item-search">
-      <%= form_with(url: search_path, method: "get", local: true) do |form|%>
-        <%= form.text_field :order_id, placeholder: "Enter order id" %>
-        <%= form.submit "Search order" %>
-      <% end %>
-    </div>
-  <% end %>
   <h3 class="Order-title">All Orders</h3>
   <%= render partial:"orders", locals: {orders: @all_orders.delivered, mark_as_delivered: false } %>
 </div>

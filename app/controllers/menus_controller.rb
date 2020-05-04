@@ -1,4 +1,3 @@
-
 class MenusController < ApplicationController
   # created by cmd
   # rails generate controller Menus

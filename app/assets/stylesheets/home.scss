@@ -10,6 +10,7 @@ body{
   display: flex;
   max-width: 100%;
   margin: 0 auto;
+  height: 350px;
 }
 .NavigationBar-title{
   margin: 5px;
@@ -33,7 +34,8 @@ body{
 .Buttons-container {
   align-items: left;
   margin-left:auto ;
-  margin-top: 150px;
+  margin-top: 50px;
+  margin-bottom: 250px;
 }
 .NavigationBar-button{
   display: flex;
@@ -47,8 +49,7 @@ body{
   align-items: left;
   margin-left: auto;
   margin-right: 40px;
-  color: lightgreen;
-
+  color: green;
 }
 
 .Buttons-container:hover .NavigationBar-buttons {

@@ -1,5 +1,5 @@
 <main class="SignUp-page">
-
+  <h2 class="Sign-heading">Sign up Here!</h2>
   <%= form_with url: users_path, class: "SignUp-content" do |form| %>
     <%= form.text_field :name,
                          placeholder: "Name",
@@ -15,8 +15,13 @@
                              placeholder: "Password",
                              autofocus:"autofocus"
     %>
+     <br>
+      <%= form.password_field :password_confirmation,
+                             placeholder: "Conifrm Password",
+                             autofocus: true
+    %>
     <br>
-    <%= form.submit "Sign up",data: { "disable-with": "Signing up..." }, class: "SignUp-button"%>
+    <%= form.submit "Sign up", class: "SignUp-button"%>
 
     <p class="Get-in">
     Existing User!

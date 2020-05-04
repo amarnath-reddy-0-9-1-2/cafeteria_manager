@@ -2,45 +2,39 @@
   <h3 class="Cart-heading">Cart</h3>
   <% if @order %>
     <% if @order.order_items.empty? %>
-      <h2 class="Cart-empty">Cart is Empty</h2>
+      <h2 class="Cart-empty">Cart is empty !!</h2>
     <% else %>
       <div class="CartItem-price">
-        <p class="CartItem-title" >
-          <span>Item Name</span >
-          <span class="Price-total">Price</span>
-        </p>
-        <ul>
+        <div class="CartItems">
           <% @order.all_menu_item_names.uniq.each do |menu_item_name| %>
-            <li class="cartItem" >
-              <span><%= menu_item_name %></span >
-              <span class="Price-total">
-                <p class="CartItem-add">
-                  <%= link_to "-",
+            <div class="CartItem" >
+              <div class="CartItem-name">Item-Name : <%= menu_item_name %></div >
+                <div class="CartItem-quantity">
+                  Qty :
+                  <p class="CartItem-update"><%= link_to "-",
                             order_item_path(id: @order.order_item(menu_item_name).id, cart: 1),
-                            {:method => :delete}
-                %>
+                            {:method => :delete}%>
                   <%= @order.all_menu_item_names.count(menu_item_name) %>
                   <%= link_to "+",
                             order_items_path(menu_item_id: @order.order_item(menu_item_name).menu_item_id, cart: 1),
-                            {:method => :post} %>
-                </p>
-                <p class="Quantity">
+                            {:method => :post} %></p>
+                </div>
+                <div class="CartItem-subtotal">
                   Rs.<%= @order.order_items.get_menu_item_price(menu_item_name)*@order.all_menu_item_names.count(menu_item_name) %>
-                </p>
-              </span>
-            </li>
+                </div>
+            </div>
           <% end %>
-        </ul>
-        <p class="Cart-total" >
-          <span>Total Price</span >
-          <span class="Price-total"><%= @order.total_price %></span>
-        </p>
+        </div>
+        <div class="Cart-total" >
+          <div>Total Price : Rs.</div >
+          <div><%= @order.total_price %></div>
+        </div>
         <%= form_with(model: @order, url: orders_path, method: "post", local: true) do |form| %>
-          <%= form.submit "Checkout",data: { "disable-with": "Processing..." },class:"Cart-exit" %>
+          <%= form.submit "Place Order", class:"Cart-submit" %>
         <% end %>
       </div>
     <% end %>
   <% else %>
-    <h2 class="Cart-empty">Cart is empty</h2>
+    <h2 class="Cart-empty">Cart is empty !!</h2>
   <% end %>
 </div>

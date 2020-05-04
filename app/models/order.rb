@@ -20,7 +20,7 @@ class Order < ApplicationRecord
 
 
   def self.under_process
-    where("status= ?", "under_process").first
+    where("status= ?", "Under Process").first
   end
 
   def to_clear_string
@@ -28,7 +28,7 @@ class Order < ApplicationRecord
   end
 
   def self.delivered
-    where.not("status = ? ", "under_process")
+    where.not("status = ? ", "Under Process")
   end
 
   def self.pending_orders
@@ -36,7 +36,7 @@ class Order < ApplicationRecord
   end
 
   def order_status
-    if status == "under_process"
+    if status == "Under Process"
       "Being created"
     elsif status == "order_confirmed"
       "Order Confirmed"
