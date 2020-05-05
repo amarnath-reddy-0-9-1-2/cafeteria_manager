@@ -58,7 +58,7 @@
   padding: 10px;
   padding-left: 50px;
   padding-right: 50px;
-  margin-top: 25px;
+  margin-top: 50px;
   border-radius: 8px;
   margin-left: 400px;
   font-size: 25px;
@@ -69,4 +69,14 @@
   margin: 0 auto;
   font-size: 25px;
   color: orangered;
+}
+.Cart-address {
+  border: 2px solid black;
+  margin-left: 250px;
+  font-size: 25px;
+  padding: 15px;
+}
+.Address-heading {
+  margin-top: 100px;
+  margin-left: 250px;
 }

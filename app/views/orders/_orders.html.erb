@@ -61,8 +61,12 @@
       <div class="Order-section">
         <p class="Order-sub"> Invoice </p>
         <div class="Order-invoice">
-        <%= image_tag "list.png" %>
-        <%= link_to "Invoice", order_path(id: order.id)%>
+        <%if order.status == "order_delivered" %>
+            <%= image_tag "list.png" %>
+               <%= link_to "Invoice", order_path(id: order.id)%>
+        <%else%>
+               --
+        <%end%>
         </div>
       </div>
       <div class ="Order-section">

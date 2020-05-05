@@ -36,8 +36,7 @@ h3.Menu-name:target{
   animation: menuHighlight 15s 1;
 }
 .Menu{
-  margin: 5px;
-  padding: 5px;
+  padding: 3px;
   text-align: right;
   display: flex;
   align-items: center;
@@ -83,6 +82,9 @@ h3.Menu-name:target{
    padding: 8px;
    border-radius: 4px;
   }
+  .MenuItems {
+    margin-top: 50px;
+  }
 
  .MenuItem-details{
    display: block;
@@ -103,7 +105,7 @@ h3.Menu-name:target{
  }
 
  .MenuItem-delete{
-   margin: 10px;
+   margin: 5px;
    display: inline-flex;
    padding: 7px;
    border-radius: 4px;
@@ -146,6 +148,7 @@ h3.Menu-name:target{
   font-weight: 300px;
   color: black;
   margin-bottom: 10px;
+  margin-top: 50px;
 }
 
 .Main-content {

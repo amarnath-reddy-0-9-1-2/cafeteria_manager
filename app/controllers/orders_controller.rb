@@ -25,6 +25,7 @@ class OrdersController < ApplicationController
       redirect_to(cart_path, alert: "Order must have atleast 1 item")
     else
       @order.status = "order_confirmed"
+      @order.address = params[:address]
       @order.date = Time.now + 19800
       @order.ordered_at = Time.now + 19800
       @order.save!
