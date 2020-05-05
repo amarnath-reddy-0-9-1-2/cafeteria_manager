@@ -59,13 +59,15 @@
       </section>
 
       <div class="Order-section">
-        <p class="Order-sub"> Invoice </p>
         <div class="Order-invoice">
         <%if order.status == "order_delivered" %>
-            <%= image_tag "list.png" %>
+               <%= image_tag "list.png" %>
                <%= link_to "Invoice", order_path(id: order.id)%>
+        <%elsif order.user_id == @current_user.id%>
+                <%= image_tag "trash.png" %>
+                <%= link_to "Delete", order_path(id: order.id), :method => :delete %>
         <%else%>
-               --
+                --
         <%end%>
         </div>
       </div>

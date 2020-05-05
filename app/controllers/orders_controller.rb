@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
       @order.ordered_at = Time.now + 19800
       @order.save!
       flash[:notice] = "Order recived! Soon your order will be delivered"
-      redirect_to menus_path
+      redirect_to orders_path
     end
   end
 
@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
     @order.status = "order_delivered"
     @order.delivered_at = Time.now + 19800
     @order.save!
-    flash[:notice] = "#{@order.id} is marked as delivered!"
+    flash[:alert] = "#{@order.id} is marked as delivered!"
     redirect_to "/pending_orders"
   end
 
@@ -59,5 +59,15 @@ class OrdersController < ApplicationController
     @order.save!
     @order.order_items.rate_menu_items(params[:rating])
     redirect_to(orders_path, notice: "Thank you for rating order")
+  end
+
+  def destroy
+   order = Order.find(params[:id])
+    if order.user_id == @current_user.id
+      order.destroy
+    else
+      flash[:alert] = "you are not allowed to do that"
+    end
+     redirect_to orders_path
   end
 end

@@ -8,7 +8,7 @@
           <p class="Detail">User id : <%=@user.id%></p>
           <p class="Detail">Name : <%=@user.name%></p>
           <p class="Detail">email : <%=@user.email%></p>
-          <%if @user.role == "owner" || @user.role ="clerk" %>
+          <%if @user.role == "owner" || @user.role == "clerk" %>
             <p class="Detail">Walk in customer <%= image_tag "costumer.png" %></p>
           <%end%>
       </span>
