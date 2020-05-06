@@ -7,9 +7,11 @@
   </div>
   <%end%>
 <div class="Main-menuitems">
- <div class="Main-content">
-  <%= render partial: "menu" %>
   <%= render partial: "menu_items/menulist" %>
- </div>
+  <div class="Main-content">
+   <%if @current_user.role == "owner"%>
+  <%= render partial: "menu" %>
+  <%end%>
   <%= render partial: "search" %>
+  </div>
 </div>

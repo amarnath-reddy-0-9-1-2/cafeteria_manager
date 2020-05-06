@@ -5,52 +5,63 @@
       <h3 class="Menu-name" id=<%= menu.name %>>
         <%= menu.name %>
       </h3>
+    <div class="Menu-set">
+      <div class="Title-line">
+       <div class="Title-item">Product</div>
+       <div class="Title-item">Description</div>
+       <div class="Title-item">Price</div>
+       <div class="Title-item">Ratings</div>
+      </div>
       <% menu.menu_items.order(:name).each do |menu_item| %>
         <li class="MenuItem">
-          <div>
-            <span class="MenuItem-name">Item-Name : <%= menu_item.name %></span>
+
+            <span class="MenuItem-name"><%= menu_item.name %></span>
               <span class="MenuItem-description"> <%= menu_item.description %> </span>
-                 <span class="MenuItem-price">
-                Price : ₹<%= menu_item.price %>
-              </span>
+                 <span class="MenuItem-price">₹<%= menu_item.price %> </span>
+
+
                <span class="MenuItem-rating">
-             Ratings :  <% menu_item.ratings.to_i.times do %>
+                   <% menu_item.ratings.to_i.times do %>
                 <%= image_tag "starsfull.png" %>
               <% end %>
               <% (5-menu_item.ratings.to_i).times do %>
                 <%= image_tag "stars.png" %>
               <% end %>
             </span>
-          </div>
-          <p class="Update-item">
-            <% if @current_user.is_owner? %>
-              <p class="MenuItem-deleteone">
-                <%= link_to edit_menu_item_path(id: menu_item.id) do %>
-                  <%= image_tag "edit.png", class: "Delete-icon" %>
-                <% end %>
-                <%= link_to menu_item, method: :delete do %>
-                  <%= image_tag "delete.png" %>
+
+            <p class="Update-item">
+
+              <%if menu.active == true %>
+              <p class="OrderItem-add">
+                <% if @order %>
+                  <% if @order.order_items.get_order_item(menu_item.id).exists? %>
+
+                    <%= link_to "-",order_item_path(id: @order.order_item(menu_item.name).id),{:method => :delete}%>
+                    <%= @order.order_items.get_order_item(menu_item.id).count %>
+                    <%= link_to "+",order_items_path(menu_item_id: menu_item.id ),{:method => :post}%>
+
+                  <% else %>
+                    <%=link_to "Add to cart",order_items_path(menu_item_id: menu_item.id ),{:method => :post} %>
+                  <% end %>
+                <% else %>
+                    <%=link_to "Add to cart",order_items_path(menu_item_id: menu_item.id ),{:method => :post}%>
                 <% end %>
               </p>
-            <% end %>
-            <p class="OrderItem-add">
-              <% if @order %>
-                <% if @order.order_items.get_order_item(menu_item.id).exists? %>
-
-                  <%= link_to "-",order_item_path(id: @order.order_item(menu_item.name).id),{:method => :delete}%>
-                  <%= @order.order_items.get_order_item(menu_item.id).count %>
-                  <%= link_to "+",order_items_path(menu_item_id: menu_item.id ),{:method => :post}%>
-
-                <% else %>
-                  <%=link_to "Add to cart",order_items_path(menu_item_id: menu_item.id ),{:method => :post} %>
-                <% end %>
-              <% else %>
-                  <%=link_to "Add to cart",order_items_path(menu_item_id: menu_item.id ),{:method => :post}%>
+              <%end%>
+               <% if @current_user.is_owner? %>
+                <p class="MenuItem-deleteone">
+                  <%= link_to edit_menu_item_path(id: menu_item.id) do %>
+                    <%= image_tag "edit.png", class: "Delete-icon" %>
+                  <% end %>
+                  <%= link_to menu_item, method: :delete do %>
+                    <%= image_tag "delete.png" %>
+                  <% end %>
+                </p>
               <% end %>
             </p>
-          </p>
         </li>
       <% end %>
+      </div>
     </ul>
   <% end %>
 </div>

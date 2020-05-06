@@ -3,7 +3,11 @@ class MenusController < ApplicationController
   # rails generate controller Menus
 
   def index
-    @menus = Menu.order(:name)
+    if @current_user.role == "owner"
+        @menus = Menu.all.order(:active)
+    else
+       @menus = Menu.marked_as_active
+    end
     @order = current_user.orders.under_process
   end
 
@@ -13,6 +17,15 @@ class MenusController < ApplicationController
   def create
     menu = Menu.create!(name: params[:name].capitalize)
     render plain: "created #{menu.name} with #{menu.id}"
+  end
+
+  def update
+    ensure_owner_logged_in
+    Menu.all.map { |menu| menu.update(active: nil) }
+    menu = Menu.find(params[:id])
+    menu.active = params[:active]
+    menu.save!
+    redirect_to menus_path
   end
 
   def destroy

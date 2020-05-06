@@ -6,7 +6,7 @@
       <%= form_with(model: @menu, url: menu_items_url, method: "post", local: true) do |form|%>
         <div class="costum-select">
           <select name="menu_name" onchange=show_box(this.value)>
-           <option value="" disabled selected style="color:#7e808c">Add a Menu</option>
+           <option value="" disabled selected style="color:#7e808c">Select a Menu</option>
             <% Menu.order(:name).each do |menu|%>
               <option class="Dropdown-content" value=<%= menu.name %>> <%= menu.name %> </option>
             <% end %>

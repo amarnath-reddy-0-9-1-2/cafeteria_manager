@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_124326) do
     t.string "name"
     t.string "description"
     t.integer "price"
-    t.boolean "active"
+    t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "ratings", precision: 2, scale: 1, default: "0.0"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_124326) do
 
   create_table "menus", force: :cascade do |t|
     t.string "name"
+    t.boolean "active", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

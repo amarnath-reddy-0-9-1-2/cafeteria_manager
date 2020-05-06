@@ -1,17 +1,26 @@
 <div class="Menu-page">
    <p class="Menulist-Heading">Menus-List</p>
   <ul class="Menus-list">
-     <% @menus.each do |menu| %>
+    <% @menus.each do |menu| %>
     <li class="Menu">
-          <div class="MenuItem-delete">
+
+      <%= form_with(url: "menus/#{menu.id}", method: "put") do %>
+                  <input
+                        class="Menu-checkbox"
+                        type="checkbox"
+                        name="active"
+                        <%= menu.active ? "checked" : ""%>
+                        onclick="this.form.submit()"
+                  />
+
+      <%end%>
             <%=menu.name%>
-           <% if @current_user.is_owner? %>
-            <%= link_to menu, method: :delete do %>
-              <div class="Menu-trash"><%= image_tag "delete.png"%></div>
-            <% end %>
-           <%end%>
-          </div>
-      </li>
-    <% end %>
+            <div class="MenuItem-delete">
+                <%= link_to menu, method: :delete do %>
+                <%= image_tag "delete.png"%>
+              <% end %>
+            </div>
+    </li>
+    <%end%>
   </ul>
 </div>

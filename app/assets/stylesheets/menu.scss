@@ -1,7 +1,6 @@
 .WalkIn-costumer{
   max-width: 100%;
   margin: 5px auto;
-  margin-right: 100px;
 }
 .WalkIn-costumer > h3{
   text-align: center;
@@ -21,48 +20,50 @@
 .Menu-page{
   width: 25%;
   margin: 5px;
-  margin-left: 100px;
+  margin-left: 400px;
   margin-top: 50px;
 }
 .Menu-name{
   margin: 5px;
   padding: 5px;
+  margin-bottom: 30px;
+  margin-top: 30px;
   font-weight: bold;
   font-family: sans-serif;
-  color: rgba(0, 0, 0, 0.849);
-  border-bottom: 1px solid black;
+  color: red;
+  text-align: center;
 }
-h3.Menu-name:target{
-  animation: menuHighlight 15s 1;
-}
+
 .Menu{
-  padding: 3px;
+  padding: 12px;
   text-align: right;
   display: flex;
   align-items: center;
+  font-size: 25px;
+  border-radius: 4px;
+  width: 300px;
 }
-.Menu > a{
-  color: #0509c4;
-  margin-left: auto;
-  padding: 2px 8px;
+.Menu:hover {
+  background-color: #eee;
+
+}
+.Menu:hover .MenuItem-delete {
+  background-color: #eee;
+  display: block;
 }
 .MenuItem {
   height: 65px;
-  margin: 5px;
-  padding: 5px;
-  margin-left: 25px;
+  margin-top: 5px;
   vertical-align: middle;
   display: flex;
   align-items: center;
   font-family: sans-serif;
+
 }
 .MenuItem-box{
   width: 100%;
   padding-top: 40px;
   margin-right: 100px;
-}
-.MenuItem{
-  border-bottom: 1px dotted grey;
 }
 .MenuItem > p{
   padding: 5px;
@@ -72,13 +73,14 @@ h3.Menu-name:target{
 }
 
  .Update-item{
-   margin-left: auto;
    margin-right: 15px;
+   text-align: center;
+   display: flex;
+   margin-bottom: 200px;
   }
 
   .OrderItem-add{
-   color: white;
-   background-color: crimson;
+   background-color: #eee;
    padding: 8px;
    border-radius: 4px;
   }
@@ -93,22 +95,21 @@ h3.Menu-name:target{
    font-size: 18px;
  }
  .MenuItem-price{
-   max-width: 35px;
-   color: green;
+   text-align: center;
+   width: 300px;
    font-size: 25px;
-   margin-left: 20px;
+   display: block;
  }
  .OrderItem-add > a{
-  color: white;
+  color: black;
   width: 20px;
   padding: 5px;
  }
 
  .MenuItem-delete{
-   margin: 5px;
-   display: inline-flex;
-   padding: 7px;
-   border-radius: 4px;
+   display: none;
+   margin-left: 30px;
+
  }
  .MenuItem-delete:hover {
      background-color: rgb(176, 223, 241);
@@ -117,11 +118,10 @@ h3.Menu-name:target{
   display: inline-block;
 }
 .MenuItem-deleteone{
+
   display: none;
-  margin-left: auto;
 }
 .MenuItem-deleteone > a img{
-  margin-left: auto;
   padding: 8px;
 }
 .MenuItem:hover > .MenuItem-deleteone{
@@ -129,19 +129,23 @@ h3.Menu-name:target{
 }
 .MenuItem-description{
   font-size: 22px;
-  margin-left:25px;
   padding: 5px;
-  color: blue;
+  width: 300px;
+  text-align: center;
+  display: block;
 }
 .MenuItem-rating{
   padding: 3px;
-  margin-left: 20px;
   font-size: 25px;
-  display: inline-flex;
+  width: 300px;
+  text-align: center;
+  display: block;
 }
 .MenuItem-name {
   font-size: 25px;
-  color: orangered;
+  width: 300px;
+  text-align: center;
+  display: block;
 }
 .Menulist-Heading {
   font-size: 30px;
@@ -159,4 +163,25 @@ h3.Menu-name:target{
   0%{background-color: #a13cf9;color: white;}
   99%{background-color: #a13cf9;color: white;}
   100%{background-color: white;color: black;}
+}
+
+.Title-line {
+  display: flex;
+}
+
+.Title-item {
+  font-size: 26px;
+  font-weight: bold;
+  width: 300px;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+
+}
+
+.Menu-set {
+  border: 1px solid black;
+  margin-left: 100px;
+  margin-right: 200px;
+  margin-bottom: 20px;
 }
