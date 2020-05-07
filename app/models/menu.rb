@@ -6,4 +6,13 @@ class Menu < ApplicationRecord
   def self.marked_as_active
     all.where("active = ?", true)
   end
+
+  def get_items(current_user)
+    if current_user.is_owner?
+      menu_items.order(:active)
+    else
+      menu_items.where("active = ?", true)
+    end
+  end
+
 end

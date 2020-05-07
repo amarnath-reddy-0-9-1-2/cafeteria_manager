@@ -3,8 +3,8 @@ class MenusController < ApplicationController
   # rails generate controller Menus
 
   def index
-    if @current_user.role == "owner"
-        @menus = Menu.all.order(:active)
+    if @current_user.is_owner?
+        @menus = Menu.all.order("active DESC NULLS LAST")
     else
        @menus = Menu.marked_as_active
     end

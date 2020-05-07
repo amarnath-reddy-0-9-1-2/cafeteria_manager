@@ -9,7 +9,7 @@
      <script>
       function show_box(val) {
         var element = document.getElementById("new_menu_name");
-        if (val == "Add a Menu")
+        if (val == 0)
            { element.style.display = "inline"; }
         else { element.style.display = "none"; }
       }
@@ -54,7 +54,7 @@
               </li>
               <li class="NavigationBar-button">
                 <%= image_tag "sales.png" %>
-                <%= link_to "Sale Reports", all_orders_path%>
+                <%= link_to "Sale Reports", order_report_path %>
               </li>
               <li class="NavigationBar-button">
               <%= image_tag "users.png" %>

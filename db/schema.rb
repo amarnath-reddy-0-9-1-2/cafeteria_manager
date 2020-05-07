@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2020_05_01_124326) do
 
   create_table "menu_items", force: :cascade do |t|
     t.integer "menu_id"
-    t.string "name"
-    t.string "description"
+    t.text "name"
+    t.text "description"
     t.integer "price"
     t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_124326) do
   end
 
   create_table "menus", force: :cascade do |t|
-    t.string "name"
+    t.text "name"
     t.boolean "active", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_124326) do
   create_table "order_items", force: :cascade do |t|
     t.integer "order_id"
     t.integer "menu_item_id"
-    t.string "menu_item_name"
+    t.text "menu_item_name"
     t.integer "menu_item_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_124326) do
   create_table "orders", force: :cascade do |t|
     t.date "date"
     t.integer "user_id"
-    t.string "address"
+    t.text "address"
     t.datetime "delivered_at"
     t.datetime "ordered_at"
     t.datetime "created_at", precision: 6, null: false
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_124326) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.text "name"
     t.string "email"
     t.string "role"
     t.string "password_digest"

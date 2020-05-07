@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get "/sign_in", to: "sessions#new", as: :new_session
   post "/sign_in", to: "sessions#create", as: :session
   delete "/sign_out", to: "sessions#destroy", as: :destroy_session
+  get "/sales_report", to: "orders#report", as: :order_report
+  put "/activate", to: "menu_items#activate", as: :menu_items_activate
 end

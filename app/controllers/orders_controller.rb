@@ -58,7 +58,7 @@ class OrdersController < ApplicationController
     @order.ratings = params[:rating]
     @order.save!
     @order.order_items.rate_menu_items(params[:rating])
-    redirect_to(orders_path, notice: "Thank you for rating order")
+    redirect_to(request.referrer, notice: "Thank you for rating order")
   end
 
   def destroy
@@ -68,6 +68,11 @@ class OrdersController < ApplicationController
     else
       flash[:alert] = "you are not allowed to do that"
     end
-     redirect_to orders_path
+     redirect_to request.referrer
   end
+
+  def report
+    ensure_owner_logged_in
+  end
+
 end

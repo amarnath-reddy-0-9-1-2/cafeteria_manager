@@ -12,10 +12,24 @@
        <div class="Title-item">Price</div>
        <div class="Title-item">Ratings</div>
       </div>
-      <% menu.menu_items.order(:name).each do |menu_item| %>
+      <% menu.get_items(@current_user).each do |menu_item| %>
         <li class="MenuItem">
 
-            <span class="MenuItem-name"><%= menu_item.name %></span>
+            <div class="MenuItem-name">
+             <%= menu_item.name %>
+            <%if @current_user.is_owner? && menu.active == true %>
+             <%= form_with(url: menu_items_activate_path(id: menu_item.id), method: "put") do %>
+                  <input
+                        class="Menu-checkbox"
+                        type="checkbox"
+                        name="active"
+                        <%= menu_item.active ? "checked" : ""%>
+                        onclick="this.form.submit()"
+                  />
+             <%end%>
+             <%end%>
+            </div>
+
               <span class="MenuItem-description"> <%= menu_item.description %> </span>
                  <span class="MenuItem-price">₹<%= menu_item.price %> </span>
 
@@ -31,7 +45,7 @@
 
             <p class="Update-item">
 
-              <%if menu.active == true %>
+              <%if menu.active == true && menu_item.active == true %>
               <p class="OrderItem-add">
                 <% if @order %>
                   <% if @order.order_items.get_order_item(menu_item.id).exists? %>

@@ -4,7 +4,7 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.date :date
       t.integer :user_id
       t.integer :feedback
-      t.string :address
+      t.text :address
       t.datetime :delivered_at
       t.datetime :ordered_at
       t.string :status
