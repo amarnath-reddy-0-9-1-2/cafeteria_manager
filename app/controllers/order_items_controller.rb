@@ -1,9 +1,6 @@
 class OrderItemsController < ApplicationController
   # created by cmd
   # rails generate controller OrderItems
-  skip_before_action :verify_authenticity_token
-  skip_before_action :ensure_user_logged_in
-
   def index
     render plain: OrderItem.all.map { |order| order.to_clear_string }.join("\n")
   end

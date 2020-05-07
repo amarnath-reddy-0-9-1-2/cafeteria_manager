@@ -1,16 +1,16 @@
 
 <h3>
-  <th colspan="5" class="Header-table"><%= title %></th>
+  <th colspan="6" class="Header-table"><%= title %></th>
 </h3>
 <tr>
-  <th>Id</th><th>Name</th><th>Email</th><th>Orders</th><th>Edit</th>
+  <th>Id</th><th>Name</th><th>Email</th><th>No.of orders</th><th>Orders</th><th>Edit</th>
 </tr>
 <% if owner %>
   <tr class="User-list" id=<%= owner.id %>>
-    <td><%= owner.id %></td><td><%= owner.name %></td><td><%= owner.email %></td>
+    <td><%= owner.id %></td><td><%= owner.name %></td><td><%= owner.email %></td><td> <%=owner.orders.delivered.count%></td>
     <td>
       <% owner.orders.delivered.ids.each do |id| %>
-        <%= link_to id, "orders/#{id}" %>,
+      <%= link_to id, "orders/#{id}" %>,
       <% end %>
     </td>
     <td>None</td>
@@ -19,7 +19,7 @@
 <% elsif type %>
   <% type.each do |type| %>
     <tr class="User-list" id=<%= type.id %>>
-      <td><%= type.id %></td><td><%= type.name %></td><td><%= type.email %></td>
+      <td><%= type.id %></td><td><%= type.name %></td><td><%= type.email %></td><td> <%=type.orders.delivered.count%></td>
       <td>
         <% type.orders.delivered.ids.each do |id| %>
           <%= link_to id, "orders/#{id}" %>,

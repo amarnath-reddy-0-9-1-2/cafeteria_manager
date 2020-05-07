@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   # created by cmd
   # rails generate model MenuItems date:datetime user_id:integer delivered_at:datetime
-  has_many :order_items
+  has_many :order_items, dependent: :destroy
   belongs_to :user
 
   def order_item(menu_item_name)

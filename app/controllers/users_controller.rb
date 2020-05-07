@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :ensure_user_logged_in
-
+  skip_before_action :ensure_user_logged_in, only: [:create, :new]
+  before_action :ensure_owner_logged_in, only: [:index, :clerk, :clerk_update]
   def new
     if current_user
       flash[:notice] = "Your'e already signed up user"
@@ -15,13 +15,10 @@ class UsersController < ApplicationController
   end
 
   def edit
-    unless current_user
-      redirect_to root_path
-    end
+
   end
 
   def index
-    ensure_owner_logged_in
     @clerks = User.clerks
     @customers = User.customers
   end
@@ -48,7 +45,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    def update
       user = current_user
       password = params[:password]
       password_confirmation = params[:password_confirmation]
@@ -66,11 +62,9 @@ class UsersController < ApplicationController
         flash[:alert] = "Your current password is incorrect"
         redirect_to edit_user_path
       end
-    end
   end
 
   def clerk
-    ensure_owner_logged_in
     name = params[:name]
     email = params[:email]
     password = params[:password]
@@ -91,7 +85,6 @@ class UsersController < ApplicationController
   end
 
   def clerk_update
-    ensure_owner_logged_in
     id = params[:id]
     user = User.find(id)
     if user.is_clerk?

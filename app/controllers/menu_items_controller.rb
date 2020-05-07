@@ -1,6 +1,7 @@
 class MenuItemsController < ApplicationController
   # created by cmd
   # rails generate controller MenuItems
+  before_action :ensure_owner_logged_in, only: [:create, :destroy, :edit, :update, :activate]
 
   def index
   end
@@ -9,7 +10,7 @@ class MenuItemsController < ApplicationController
   end
 
   def create
-         if params[:id]
+        if params[:id]
             menu = params[:id] == "0" ? Menu.new(name: params[:new_menu_name].capitalize) : Menu.find(params[:id])
             menu.save
             menu_item = MenuItem.new(name: params[:name].capitalize, description: params[:description].capitalize, menu_id: menu.id, price: params[:price])
@@ -21,17 +22,15 @@ class MenuItemsController < ApplicationController
         else
           flash[:alert] = "Please select a menu name"
         end
-        redirect_to menus_path
+      redirect_to menus_path
   end
 
   def destroy
-    ensure_owner_logged_in
     MenuItem.find(params[:id]).destroy
     redirect_to menus_path
   end
 
   def edit
-    ensure_owner_logged_in
     @menu_item = MenuItem.find(params[:id])
   end
 
@@ -50,7 +49,6 @@ class MenuItemsController < ApplicationController
   end
 
   def activate
-    ensure_owner_logged_in
     id = params[:id]
     active = params[:active]
     menu_item = MenuItem.find(id)

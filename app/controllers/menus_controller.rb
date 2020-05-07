@@ -1,14 +1,14 @@
 class MenusController < ApplicationController
   # created by cmd
   # rails generate controller Menus
-
+  before_action :ensure_owner_logged_in, only: [:create, :destroy, :update]
   def index
     if @current_user.is_owner?
         @menus = Menu.all.order("active DESC NULLS LAST")
     else
        @menus = Menu.marked_as_active
     end
-    @order = current_user.orders.under_process
+    @order = @current_user.orders.under_process
   end
 
   def show
@@ -16,7 +16,7 @@ class MenusController < ApplicationController
 
   def create
     menu = Menu.create!(name: params[:name].capitalize)
-    render plain: "created #{menu.name} with #{menu.id}"
+    flash[:notice] = "Menu added succesfully"
   end
 
   def update
