@@ -1,4 +1,5 @@
 class MenusController < ApplicationController
+  skip_before_action :verify_authenticity_token
   # created by cmd
   # rails generate controller Menus
   before_action :ensure_owner_logged_in, only: [:create, :destroy, :update]
@@ -25,6 +26,9 @@ class MenusController < ApplicationController
     menu = Menu.find(params[:id])
     menu.active = params[:active]
     menu.save!
+    if Order.under_process
+      Order.under_process.destroy
+    end
     redirect_to menus_path
   end
 

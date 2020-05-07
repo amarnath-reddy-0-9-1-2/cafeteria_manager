@@ -54,6 +54,10 @@ class MenuItemsController < ApplicationController
     menu_item = MenuItem.find(id)
     menu_item.active = active
     menu_item.save!
+    @order_items = OrderItem.get_invalid_items(id)
+    if @order_items
+      @order_items.destroy_all
+    end
     redirect_to menus_path
   end
 
