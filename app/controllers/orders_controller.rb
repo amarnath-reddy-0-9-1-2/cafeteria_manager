@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
     @order.status = "order_delivered"
     @order.delivered_at = Time.now + 19800
     @order.save!
-    flash[:alert] = "#{@order.id} is marked as delivered!"
+    flash[:notice] = "#{@order.id} is marked as delivered!"
     redirect_to "/pending_orders"
   end
 
@@ -58,21 +58,22 @@ class OrdersController < ApplicationController
     @order.ratings = params[:rating]
     @order.save!
     @order.order_items.rate_menu_items(params[:rating])
-    redirect_to(request.referrer, notice: "Thank you for rating order")
+    flash[:notice] = "Thank you for rating order"
+    redirect_to request.referrer
   end
 
   def destroy
-   order = Order.find(params[:id])
+    order = Order.find(params[:id])
     if order.user_id == @current_user.id
       order.destroy
+      flash[:notice] = "Order deleted sucessfully"
     else
       flash[:alert] = "you are not allowed to do that"
     end
-     redirect_to request.referrer
+    redirect_to request.referrer
   end
 
   def report
     ensure_owner_logged_in
   end
-
 end

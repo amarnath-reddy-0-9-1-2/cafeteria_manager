@@ -55,7 +55,7 @@ class UsersController < ApplicationController
       current_password = params[:current_password]
       if user.authenticate(current_password)
         if password == password_confirmation
-          flash[:alert] = "Password updated successfully"
+          flash[:notice] = "Password updated successfully"
           user.update!(password: password)
           redirect_to user_path
         else
@@ -67,5 +67,38 @@ class UsersController < ApplicationController
         redirect_to edit_user_path
       end
     end
+  end
+
+  def clerk
+    ensure_owner_logged_in
+    name = params[:name]
+    email = params[:email]
+    password = params[:password]
+    password_confirmation = params[:password_confirmation]
+    if password == password_confirmation
+      user = User.new(name: name.capitalize, email: email, role: "clerk", password: password)
+      if user.save
+        user.save!
+        redirect_to request.referrer
+      else
+        flash[:error] = user.errors.full_messages
+        redirect_to request.referrer
+      end
+    else
+      flash[:alert] = "New passwords doesnt match"
+      redirect_to request.referrer
+    end
+  end
+
+  def clerk_update
+    ensure_owner_logged_in
+    id = params[:id]
+    user = User.find(id)
+    if user.is_clerk?
+      user.destroy
+    else
+      flash[:alert] = "you cannot do chang the role of a user without pemission"
+    end
+    redirect_to request.referrer
   end
 end

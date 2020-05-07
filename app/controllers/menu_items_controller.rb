@@ -14,7 +14,7 @@ class MenuItemsController < ApplicationController
             menu.save
             menu_item = MenuItem.new(name: params[:name].capitalize, description: params[:description].capitalize, menu_id: menu.id, price: params[:price])
           if menu.save && menu_item.save
-            flash[:notice] = "Item added successfully!"
+            flash[:alert] = "Item added successfully!"
           else
             flash[:error] = menu_item.errors.full_messages + menu.errors.full_messages
           end

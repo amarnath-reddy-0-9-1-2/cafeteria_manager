@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "home#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   put "/orders/rating", to: "orders#rating", as: :order_rating
-  get "orders/all", to: "orders#all_orders", as: :all_orders
+  get "/orders/all", to: "orders#all_orders", as: :all_orders
   resources :menus, :menu_items, :orders, :order_items, :users
   get "/cart", to: "orders#cart", as: :cart
   get "/pending_orders", to: "orders#pending_orders", as: :pending_orders
@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   delete "/sign_out", to: "sessions#destroy", as: :destroy_session
   get "/sales_report", to: "orders#report", as: :order_report
   put "/activate", to: "menu_items#activate", as: :menu_items_activate
+  post "/clerk", to: "users#clerk", as: :clerk
+  post "/clerk_update", to: "users#clerk_update", as: :clerk_update
 end

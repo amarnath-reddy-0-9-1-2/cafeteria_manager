@@ -87,21 +87,24 @@
        </div>
       </nav>
       <div class="About-text">We are Online now</div>
-      <% if flash.alert %>
-        <p class="alert"><%= alert %></p>
-      <%end%>
-      <% if flash[:error] %>
-        <div id="error_text">
-          <h2>
-            <%= pluralize(flash[:error].count, "error") %> Donot save:
-          </h2>
-          <ul>
-            <% flash[:error].each_with_index do |msg,index| %>
-              <li class="Warning-text"><%= "#{index + 1}.#{msg}" %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+      <div class="error_text">
+        <% if flash.alert %>
+          <p><%= alert %></p>
+        <%end%>
+        <% if flash[:error] %>
+            <ul>
+              <% flash[:error].each_with_index do |msg,index| %>
+                <li><%= "#{index + 1}.#{msg}" %></li>
+              <% end %>
+            </ul>
+        <% end %>
+      </div>
+      <div class="notice_text">
+        <%if flash.notice%>
+          <p><%=notice%></p>
+        <%end%>
+      </div>
+
     </div>
 
     <div class="content">
