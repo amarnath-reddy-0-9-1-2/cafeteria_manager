@@ -1,0 +1,32 @@
+<h2 class="Report-heading">Sales Reports </h2>
+<div class="Sales-report">
+<h3 class = "report-detail">Total Menus : <%=@menus.count%></h3>
+<h3 class = "report-detail">Total Items : <%=@menu_items.count%></h3>
+<h3 class = "report-detail">Total Orders : <%=@orders.count%></h3>
+<h3 class = "report-detail">Total Clerks : <%=@users.clerks.count%></h3>
+<h3 class = "report-detail">Total Online Customers : <%=@users.customers.count%></h3>
+<h3>Item-wise analysis</h3>
+<% @orders.each do |order| %>
+ <% order.all_menu_item_names.uniq.each do |menu_item| %>
+             <div class="Each-calculation">
+                <%= menu_item %> x <%=order.all_menu_item_names.count(menu_item).to_s %> =
+                <%= order.order_items.get_menu_item_price(menu_item)*order.all_menu_item_names.count(menu_item) %>
+             </div>
+  <% end %>
+<% end %>
+
+<%price = 0%>
+<%@orders.each { |order| price = price + order.total_price }%>
+<%price_offline = 0%>
+<%@orders.all.each do |order|%>
+    <% if order.walkin_order? %>
+      <%price_offline = price_offline + order.total_price %>
+    <%end%>
+<%end%>
+
+<h3>Offline sales :<%=price_offline%></h3>
+<h3>Online sales :<%=(price - price_offline)%>
+<h3>Total sales :<%=price%></h3>
+
+
+</div>

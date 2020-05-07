@@ -8,7 +8,6 @@ class Order < ApplicationRecord
     order_items.where(menu_item_name: menu_item_name).first
   end
 
-
   def all_menu_item_names
     order_items.order(:menu_item_name).map { |item| item.menu_item_name }
   end
@@ -33,6 +32,10 @@ class Order < ApplicationRecord
     where.not("status = ? ", "Under Process")
   end
 
+  def self.completed
+    where("status= ?", "order_delivered")
+  end
+
   def self.pending_orders
     where("status= ?", "order_confirmed")
   end
@@ -51,5 +54,14 @@ class Order < ApplicationRecord
     price = 0
     order_items.each { |item| price = price + item.menu_item_price }
     price
+  end
+
+  def walkin_order?
+    user = User.find(user_id)
+    if user.is_owner? || user.is_clerk?
+      true
+    else
+      false
+    end
   end
 end

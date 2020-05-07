@@ -68,3 +68,14 @@
 .Dropdown-content {
   background-color: skyblue;
 }
+
+.Report-heading {
+  text-align: center;
+}
+.report-detail {
+   font-size: 21px;
+   margin: 6px;
+}
+.Sales-report {
+  margin-top: 50px;
+}

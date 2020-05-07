@@ -76,7 +76,7 @@ class OrdersController < ApplicationController
   def report
     ensure_owner_logged_in
     @users = User.all
-    @orders = Order.delivered
+    @orders = Order.completed
     @menus = Menu.all
     @menu_items = MenuItem.all
   end

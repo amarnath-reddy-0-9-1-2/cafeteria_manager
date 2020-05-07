@@ -3,11 +3,12 @@ class MenusController < ApplicationController
   # created by cmd
   # rails generate controller Menus
   before_action :ensure_owner_logged_in, only: [:create, :destroy, :update]
+
   def index
     if @current_user.is_owner?
-        @menus = Menu.all.order("active DESC NULLS LAST")
+      @menus = Menu.all.order("active DESC NULLS LAST")
     else
-       @menus = Menu.marked_as_active
+      @menus = Menu.marked_as_active
     end
     @order = @current_user.orders.under_process
   end
