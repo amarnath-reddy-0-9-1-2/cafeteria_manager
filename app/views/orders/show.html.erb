@@ -26,9 +26,12 @@
       <h3><th colspan="4" class="Header-table">Items</th></h3>
       <tr><th>ITEM-NAME</th><th>QUANTITY</th><th>ITEM-COST</th><th>SUBTOTAL</th></tr>
       <%@order.all_menu_item_names.uniq.each do |menu_item| %>
-      <tr><th><%=menu_item%></th><th><%=@order.all_menu_item_names.count(menu_item).to_s%></th>
-      <th><%=@order.order_items.get_menu_item_price(menu_item)%></th>
-      <th><%= @order.order_items.get_menu_item_price(menu_item)*@order.all_menu_item_names.count(menu_item) %></th></tr>
+        <tr>
+          <td><%=menu_item%></td>
+          <td><%=@order.all_menu_item_names.count(menu_item).to_s%></td>
+          <td><%=@order.order_items.get_menu_item_price(menu_item)%></td>
+          <td><%= @order.order_items.get_menu_item_price(menu_item)*@order.all_menu_item_names.count(menu_item) %></td>
+        </tr>
       <%end%>
     </table>
   </div>
