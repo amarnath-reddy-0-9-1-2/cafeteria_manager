@@ -10,6 +10,8 @@
           <p class="Detail">email : <%=@user.email%></p>
           <%if @user.is_owner? || @user.is_clerk? %>
             <p class="Detail">Walk in customer <%= image_tag "costumer.png" %></p>
+          <%else%>
+            <p class="Detail">Online customer </p>
           <%end%>
       </span>
       <span class="Invoice-order">

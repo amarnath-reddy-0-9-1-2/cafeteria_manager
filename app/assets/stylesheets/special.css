@@ -115,10 +115,7 @@
   margin-bottom: 30px;
   color: blue;
 }
-.Item-head {
- font-size: 26px;
- padding-bottom: 20px;
-}
+
 .Report-page {
   text-align: center;
   border: 1px solid black;
@@ -128,11 +125,7 @@
   padding: 30px;
   margin-bottom: 60px;
 }
-.Item-analysis {
-  padding-top: 30px;
-  margin-bottom: 20px;
 
-}
 .Sub-analysis {
   font-size: 20px;
 }
@@ -148,6 +141,8 @@
   margin-left: 300px;
   margin-top: 50px;
   padding-bottom: 30px;
+  padding-top: 30px;
+  margin-bottom: 20px;
 }
 
 .Report-detail {

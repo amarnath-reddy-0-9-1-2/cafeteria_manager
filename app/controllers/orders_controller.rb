@@ -85,15 +85,11 @@ class OrdersController < ApplicationController
     ensure_owner_logged_in
     @start_date = params[:start_date]
     @end_date = params[:end_date]
-    if @start_date == nil || @end_date == nil
-      flash[:alert] = "enter the dates"
-    else
     @customers = User.customers
     @clerks = User.clerks
     @orders = Order.completed.get_orders_between(@start_date, @end_date)
     @menus = Menu.all
     @menu_items = MenuItem.all
     @owner = User.where("role = ?", "owner")
-    end
   end
 end
