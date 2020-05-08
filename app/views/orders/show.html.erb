@@ -1,7 +1,7 @@
 <div class="Invoice-page">
   <h2 class="Invoice-heading">KFC</h2>
   <h2 class="Invoice-heading">INVOICE</h2>
- <div class="Invoice-box">
+  <div class="Invoice-box">
     <div class="Detail-box">
       <span class="Invoice-user">
           <h3 class="Invoice-subheading">Costumer Details</h3>
@@ -18,7 +18,6 @@
           <p class="Detail">Address : <%=@order.address%></p>
           <p class="Detail">Ordered time : <%=@order.ordered_at.strftime("%d %B,%Y - %I:%M %p")%></p>
           <p class="Detail">Delivery time : <%=@order.delivered_at.strftime("%d %B,%Y - %I:%M %p")%></p>
-
       </span>
     </div>
     <table class="Invoice-table">
@@ -30,10 +29,9 @@
       <th><%= @order.order_items.get_menu_item_price(menu_item)*@order.all_menu_item_names.count(menu_item) %></th></tr>
       <%end%>
     </table>
-
- </div>
+  </div>
   <div class="Invoice-bottom">
      <div class="Invoice-message">Thank You</div>
-      <div class="Invoice-total">Total : Rs.<%=@order.total_price%></div>
-    </div>
+     <div class="Invoice-total">Total : Rs.<%=@order.total_price%></div>
+  </div>
 </div>

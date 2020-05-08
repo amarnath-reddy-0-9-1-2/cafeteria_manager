@@ -1,0 +1,26 @@
+<h3 class="Report-heading">Report for Sales Between <%=@start_date%> and <%=@end_date%></h3>
+<div class="Report-page">
+    <div class="User-analysis">
+      <div class ="Sub-analysis"><%= render partial:"analysis", locals: {persons: @owner.all, title: "Owners" } %></div>
+      <div class ="Sub-analysis"><%= render partial:"analysis", locals: {persons: @clerks.all, title: "Clerks" } %></div>
+      <div class ="Sub-analysis"><%= render partial:"analysis", locals: {persons: @customers.all, title: "Customers" } %></div>
+    </div>
+    <%price = 0%>
+    <%count = 0%>
+    <%@orders.each { |order| price = price + order.total_price }%>
+    <%price_offline = 0%>
+    <%@orders.all.each do |order|%>
+        <% if order.walkin_order? %>
+          <%price_offline = price_offline + order.total_price %>
+          <%count = count + 1%>
+        <%end%>
+    <%end%>
+    <div class="Item-analysis">
+      <div class ="Report-detail">Online Orders : <%=@orders.count-count%></div>
+      <div class ="Report-detail">Offline Orders : <%=count%></div>
+      <div class ="Report-detail">Total Orders : <%=@orders.count%></div>
+      <h3 class = "Report-detail">Offline sales : Rs.<%=price_offline%></h3>
+      <h3 class = "Report-detail">Online sales : Rs.<%=(price - price_offline)%>
+      <h3 class = "Report-detail">Total sales : Rs.<%=price%></h3>
+    </div>
+</div>

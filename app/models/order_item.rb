@@ -29,10 +29,4 @@ class OrderItem < ApplicationRecord
   def self.get_order_item(menu_item_id)
     where("menu_item_id = ?", menu_item_id)
   end
-
-  def self.get_invalid_items(id)
-    if Order.under_process && Order.under_process.order_items
-    Order.under_process.order_items.where("menu_item_id = ?",id)
-    end
-  end
 end

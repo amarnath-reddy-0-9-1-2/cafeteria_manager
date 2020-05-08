@@ -1,7 +1,6 @@
 <main class="SignUp-page">
-   <h2 class="Sign-heading">Sign In Here!</h2>
+  <h2 class="Sign-heading">Sign In Here!</h2>
   <%= form_with url: session_path, class: "SignUp-content" do |f| %>
-
     <%= f.email_field :email,
                          placeholder: "Email",
                          autofocus:"autofocus"
@@ -13,10 +12,9 @@
       %>
     <br>
     <%= f.submit "Log in", class: "Login-button" %>
-       <p class="Get-in">
-         New User!
+    <p class="Get-in">
+      New User!
       <%= link_to "Sign Up here", new_user_path, class: "SignUp-link" %>
     </p>
   <% end %>
-</main>
 </main>

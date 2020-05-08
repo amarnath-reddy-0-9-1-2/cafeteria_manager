@@ -4,34 +4,30 @@
       <table class="Clerks"><%= render partial: "users", locals: {type: @clerks, owner: nil, title: "Clerks"} %></table>
       <table class="Clerks"><%= render partial: "users", locals: {type: @customers, owner: nil, title: "Customers"} %></table>
   </section>
-
   <div class="Create-clerk">
-  <h2 class="Sign-heading">Appoint a clerk</h2>
-  <%= form_with url: clerk_path, class: "SignUp-content" do |form| %>
-    <%= form.text_field :name,
-                         placeholder: "Name",
-                         autofocus:"autofocus"
-    %>
-    <br>
-    <%= form.email_field :email,
-                          placeholder: "Email",
+    <h2 class="Sign-heading">Appoint a clerk</h2>
+    <%= form_with url: clerk_path, class: "SignUp-content" do |form| %>
+      <%= form.text_field :name,
+                          placeholder: "Name",
                           autofocus:"autofocus"
-    %>
-    <br>
-    <%= form.password_field :password,
-                             placeholder: "Password",
-                             autofocus:"autofocus"
-    %>
-     <br>
+      %>
+      <br>
+      <%= form.email_field :email,
+                            placeholder: "Email",
+                            autofocus:"autofocus"
+      %>
+      <br>
+      <%= form.password_field :password,
+                              placeholder: "Password",
+                              autofocus:"autofocus"
+      %>
+      <br>
       <%= form.password_field :password_confirmation,
-                             placeholder: "Conifrm Password",
-                             autofocus: true
-    %>
-    <br>
-    <%= form.submit "Appoint", class: "SignUp-button"%>
-
-  <%end%>
-</div>
-
-
+                              placeholder: "Conifrm Password",
+                              autofocus: true
+      %>
+      <br>
+      <%= form.submit "Appoint", class: "SignUp-button"%>
+    <%end%>
+  </div>
 </main>

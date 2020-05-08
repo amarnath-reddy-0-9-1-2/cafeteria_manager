@@ -21,7 +21,7 @@ class Order < ApplicationRecord
   end
 
   def self.under_process
-    where("status= ?", "Under Process").first
+    where("status= ?", "Under Process")
   end
 
   def to_clear_string
@@ -63,5 +63,9 @@ class Order < ApplicationRecord
     else
       false
     end
+  end
+
+  def self.get_orders_between(start_date, end_date)
+    all.where("date >= ? and  date<= ?", start_date, end_date)
   end
 end

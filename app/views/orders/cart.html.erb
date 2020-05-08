@@ -1,5 +1,6 @@
 <div class="Cart">
   <h3 class="Cart-heading">Cart</h3>
+  <h3 class="Cart-notice">Note: Cart is Cleared once Menu is Revised</h3>
   <% if @order %>
     <% if @order.order_items.empty? %>
       <h2 class="Cart-empty">Cart is empty !!</h2>
@@ -8,32 +9,34 @@
         <div class="CartItems">
           <% @order.all_menu_item_names.uniq.each do |menu_item_name| %>
             <div class="CartItem" >
-              <div class="CartItem-name">Item-Name : <%= menu_item_name %></div >
+              <div class="CartItem-name">Item-Name : <%= menu_item_name %></div>
                 <div class="CartItem-quantity">
                   Qty :
-                  <p class="CartItem-update"><%= link_to "-",
+                  <p class="CartItem-update">
+                    <%= link_to "-",
                             order_item_path(id: @order.order_item(menu_item_name).id, cart: 1),
                             {:method => :delete}%>
-                  <%= @order.all_menu_item_names.count(menu_item_name) %>
-                  <%= link_to "+",
+                    <%= @order.all_menu_item_names.count(menu_item_name) %>
+                    <%= link_to "+",
                             order_items_path(menu_item_id: @order.order_item(menu_item_name).menu_item_id, cart: 1),
-                            {:method => :post} %></p>
+                            {:method => :post} %>
+                  </p>
                 </div>
-                <div class="CartItem-subtotal">
+              <div class="CartItem-subtotal">
                   Rs.<%= @order.order_items.get_menu_item_price(menu_item_name)*@order.all_menu_item_names.count(menu_item_name) %>
-                </div>
+              </div>
             </div>
           <% end %>
         </div>
         <div class="Cart-total" >
-          <div>Total Price : Rs.</div >
+          <div>Total Price : Rs.</div>
           <div><%= @order.total_price %></div>
         </div>
         <%= form_with(model: @order, url: orders_path, method: "post", local: true) do |form| %>
-            <h2 class="Address-heading">Address</h2>
+          <h2 class="Address-heading">Address</h2>
           <div>
            <%=text_area_tag 'address', nil, rows: 5, cols: 30, class:"Cart-address"%>
-         </div>
+          </div>
           <%= form.submit "Place Order", class:"Cart-submit" %>
         <% end %>
       </div>

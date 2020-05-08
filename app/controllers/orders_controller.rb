@@ -20,13 +20,12 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = current_user.orders.under_process
+    @order = current_user.orders.under_process.first
     if @order.order_items.empty?
       redirect_to(cart_path, alert: "Order must have atleast 1 item")
     else
       @order.status = "order_confirmed"
       @order.address = params[:address]
-      @order.date = Time.now + 19800
       @order.ordered_at = Time.now + 19800
       @order.save!
       flash[:notice] = "Order recived! Soon your order will be delivered"
@@ -39,13 +38,14 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.status = "order_delivered"
     @order.delivered_at = Time.now + 19800
+    @order.date = Date.today
     @order.save!
     flash[:notice] = "#{@order.id} is marked as delivered!"
     redirect_to "/pending_orders"
   end
 
   def cart
-    @order = current_user.orders.under_process
+    @order = current_user.orders.under_process.first
   end
 
   def all_orders
@@ -79,5 +79,21 @@ class OrdersController < ApplicationController
     @orders = Order.completed
     @menus = Menu.all
     @menu_items = MenuItem.all
+  end
+
+  def date_wise_report
+    ensure_owner_logged_in
+    @start_date = params[:start_date]
+    @end_date = params[:end_date]
+    if @start_date == nil || @end_date == nil
+      flash[:alert] = "enter the dates"
+    else
+    @customers = User.customers
+    @clerks = User.clerks
+    @orders = Order.completed.get_orders_between(@start_date, @end_date)
+    @menus = Menu.all
+    @menu_items = MenuItem.all
+    @owner = User.where("role = ?", "owner")
+    end
   end
 end

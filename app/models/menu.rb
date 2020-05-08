@@ -14,5 +14,4 @@ class Menu < ApplicationRecord
       menu_items.where("active = ?", true)
     end
   end
-
 end

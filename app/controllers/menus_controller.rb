@@ -1,7 +1,7 @@
 class MenusController < ApplicationController
-  skip_before_action :verify_authenticity_token
   # created by cmd
   # rails generate controller Menus
+  skip_before_action :verify_authenticity_token, only: [:update]
   before_action :ensure_owner_logged_in, only: [:create, :destroy, :update]
 
   def index
@@ -10,7 +10,7 @@ class MenusController < ApplicationController
     else
       @menus = Menu.marked_as_active
     end
-    @order = @current_user.orders.under_process
+    @order = @current_user.orders.under_process.first
   end
 
   def show
@@ -27,9 +27,7 @@ class MenusController < ApplicationController
     menu = Menu.find(params[:id])
     menu.active = params[:active]
     menu.save!
-    if Order.under_process
-      Order.under_process.destroy
-    end
+    Order.under_process.destroy_all
     redirect_to menus_path
   end
 

@@ -1,53 +1,44 @@
 <% orders.each do |order| %>
   <div class="Orderone" id="<%= order.id %>">
-
       <div class ="Order-section">
         <p class="Order-sub">Order Id</p>
         <div class="Order-id"><%= order.id %></div>
       </div>
-
       <div class="Order-section">
         <p class="Order-sub">Details</p>
-
         <% if order.user.is_clerk? || order.user.is_owner? %>
-        <div class="Walk-image">
-
-          <p class="Order-price">Walk in customer <%= image_tag "costumer.png" %></p>
-       </div>
+          <div class="Walk-image">
+            <p class="Order-price">Walk in customer <%= image_tag "costumer.png" %></p>
+          </div>
         <% else %>
           <div class='User-name'>
             <%= order.user.name.capitalize %>
           </div>
         <% end %>
-
-        <% if order.date %>
+        <% if order.ordered_at %>
           <div class="Order-date">
-            <%= order.date.strftime("%d %B,%Y - %I:%M %p") %>
+            <%= order.ordered_at.strftime("%d %B,%Y - %I:%M %p") %>
           </div>
         <% end %>
-         <div class="Orderone-status"
+        <div class="Orderone-status"
             <% if order.delivered_at %>
               style="color:#11b911;font-weight:bold"
-            <% elsif order.date %>
+            <% elsif order.ordered_at %>
               style="color:#ff6000e8;font-weight:bold"
             <% else %>
               style="color:rgba(159, 49, 250, 0.932);font-weight:bold"
             <% end %>>
-
-        <%= order.order_status %>
-       </div>
-
+            <%= order.order_status %>
+        </div>
       </div>
-
       <div class="Order-section">
         <p class="Order-sub">Ratings</p>
         <div class="Order-ratings">
-        <%= render partial: "ratings", locals: {order: order, mark_as_delivered: mark_as_delivered } %>
+         <%= render partial: "ratings", locals: {order: order, mark_as_delivered: mark_as_delivered } %>
         </div>
       </div>
-
       <section class="Order-section" id="Order-details">
-          <div class="Order-sub"> Billing </p>
+         <div class="Order-sub"> Billing </div>
          <div class="Order-calculation" >
           <% order.all_menu_item_names.uniq.each do |menu_item| %>
              <div class="Each-calculation">
@@ -57,24 +48,22 @@
           <% end %>
          </div>
       </section>
-
       <div class="Order-section">
         <div class="Order-invoice">
-        <%if order.status == "order_delivered" %>
-               <%= image_tag "list.png" %>
-               <%= link_to "Invoice", order_path(id: order.id)%>
-        <%elsif order.user_id == @current_user.id%>
-                <%= image_tag "trash.png" %>
-                <%= link_to "Delete", order_path(id: order.id), :method => :delete %>
-        <%else%>
-                --
-        <%end%>
+          <%if order.status == "order_delivered" %>
+              <%= image_tag "list.png" %>
+              <%= link_to "Invoice", order_path(id: order.id)%>
+          <%elsif order.user_id == @current_user.id%>
+              <%= image_tag "trash.png" %>
+              <%= link_to "Delete", order_path(id: order.id), :method => :delete %>
+          <%else%>
+                  --
+          <%end%>
         </div>
       </div>
       <div class ="Order-section">
         <p class="Order-sub">Order price</p>
         <div class="Order-price">Rs.<%= order.total_price %></div>
       </div>
-
   </div>
 <% end %>

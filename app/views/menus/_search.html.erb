@@ -1,8 +1,6 @@
-
   <% if @current_user.is_owner? %>
-
     <div class="Add-item" id="Add-item-form">
-       <p class="Add-heading">Add Items Here!</p>
+      <p class="Add-heading">Add Items Here!</p>
       <%= form_with(model: @menu, url: menu_items_url, method: "post", local: true) do |form|%>
         <div class="costum-select">
           <select name="id" onchange=show_box(this.value)>
@@ -14,20 +12,19 @@
           </select>
         </div>
         <p class="Add-element">
-        <%= form.text_field :name, placeholder:"Item name" %>
+          <%= form.text_field :name, placeholder:"Item name" %>
         </p>
         <p class="Add-element">
-        <%= form.text_field :description, placeholder:"Description" %>
+          <%= form.text_field :description, placeholder:"Description" %>
         </p>
         <p class="Add-element">
-        <%= form.number_field :price, placeholder:"Item price"%>
+          <%= form.number_field :price, placeholder:"Item price"%>
         </p>
-
         <p class="Add-element1">
-        <%= form.text_field :new_menu_name, placeholder:"Menu name", class:"add-menu-input"%>
+          <%= form.text_field :new_menu_name, placeholder:"Menu name", class:"add-menu-input"%>
         </p>
         <p class="Add-element">
-        <%= form.submit value="Add"%>
+          <%= form.submit value="Add"%>
         <p>
       <% end %>
     </div>

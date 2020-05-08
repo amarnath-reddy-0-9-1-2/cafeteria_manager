@@ -1,17 +1,17 @@
 <% if @current_user.is_owner? %>
-<div class="WalkIn-costumer">
-  <h3>
-         You can Order for Walkin costumer
-         <%= image_tag "costumer.png" %>
+  <div class="WalkIn-costumer">
+    <h3>
+      You can Order for Walkin costumer
+      <%= image_tag "costumer.png" %>
     </h3>
   </div>
-  <%end%>
+<%end%>
 <div class="Main-menuitems">
   <%= render partial: "menu_items/menulist" %>
   <div class="Main-content">
    <%if @current_user.is_owner?%>
-  <%= render partial: "menu" %>
-  <%end%>
-  <%= render partial: "search" %>
+    <%= render partial: "menu" %>
+   <%end%>
+   <%= render partial: "search" %>
   </div>
 </div>
