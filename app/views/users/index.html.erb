@@ -1,8 +1,8 @@
 <main class="Users">
   <section>
-      <table class="Clerks"><%= render partial: "users", locals: {type: nil, owner: @current_user, title: "Owner"} %></table>
-      <table class="Clerks"><%= render partial: "users", locals: {type: @clerks, owner: nil, title: "Clerks"} %></table>
-      <table class="Clerks"><%= render partial: "users", locals: {type: @customers, owner: nil, title: "Customers"} %></table>
+      <table class="Clerks"><%= render partial: "users", locals: {type: @users.owners, title: "Owners"} %></table>
+      <table class="Clerks"><%= render partial: "users", locals: {type: @users.clerks, title: "Clerks"} %></table>
+      <table class="Clerks"><%= render partial: "users", locals: {type: @users.customers, title: "Customers"} %></table>
   </section>
   <div class="Create-clerk">
     <h2 class="Sign-heading">Appoint a clerk</h2>

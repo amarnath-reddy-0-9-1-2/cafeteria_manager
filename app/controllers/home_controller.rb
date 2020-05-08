@@ -6,4 +6,4 @@ class HomeController < ApplicationController
         redirect_to menus_path
       end
     end
-  end
+end

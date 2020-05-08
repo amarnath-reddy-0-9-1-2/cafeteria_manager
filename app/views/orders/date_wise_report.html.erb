@@ -1,9 +1,9 @@
 <h3 class="Report-heading">Report for Sales Between <%=@start_date%> and <%=@end_date%></h3>
 <div class="Report-page">
     <div class="User-analysis">
-      <div class ="Sub-analysis"><%= render partial:"analysis", locals: {persons: @owner.all, title: "Owners" } %></div>
-      <div class ="Sub-analysis"><%= render partial:"analysis", locals: {persons: @clerks.all, title: "Clerks" } %></div>
-      <div class ="Sub-analysis"><%= render partial:"analysis", locals: {persons: @customers.all, title: "Customers" } %></div>
+      <div class ="Sub-analysis"><%= render partial:"analysis", locals: {persons: @users.owners, title: "Owners" } %></div>
+      <div class ="Sub-analysis"><%= render partial:"analysis", locals: {persons: @users.clerks, title: "Clerks" } %></div>
+      <div class ="Sub-analysis"><%= render partial:"analysis", locals: {persons: @users.customers, title: "Customers" } %></div>
     </div>
     <%price = 0%>
     <%count = 0%>

@@ -1,4 +1,3 @@
-  <% if @current_user.is_owner? %>
     <div class="Add-item" id="Add-item-form">
       <p class="Add-heading">Add Items Here!</p>
       <%= form_with(model: @menu, url: menu_items_url, method: "post", local: true) do |form|%>
@@ -28,4 +27,3 @@
         <p>
       <% end %>
     </div>
-  <% end %>

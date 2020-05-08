@@ -5,7 +5,7 @@
   <h3 class = "report-detail">Total Orders : <%=@orders.count%></h3>
   <h3 class = "report-detail">Total Clerks : <%=@users.clerks.count%></h3>
   <h3 class = "report-detail">Total Online Customers : <%=@users.customers.count%></h3>
-
+  <h3 class = "report-detail">Total Owners : <%=@users.owners.count%></h3>
   <%price = 0%>
   <%@orders.each { |order| price = price + order.total_price }%>
   <%price_offline = 0%>
@@ -14,7 +14,6 @@
         <%price_offline = price_offline + order.total_price %>
       <%end%>
   <%end%>
-
   <h3 class ="report-detail">Offline sales : Rs.<%=price_offline%></h3>
   <h3 class ="report-detail">Online sales : Rs.<%=(price - price_offline)%></h3>
   <h3 class ="report-detail">Total sales : Rs.<%=price%></h3>

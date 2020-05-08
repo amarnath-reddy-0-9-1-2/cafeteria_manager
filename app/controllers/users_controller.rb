@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def new
     if current_user
       flash[:notice] = "Your'e already signed up user"
-      redirect_to menus_path
+      redirect_to root_path
     end
   end
 
@@ -19,8 +19,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @clerks = User.clerks
-    @customers = User.customers
+    @users = User.all
   end
 
   def create
@@ -31,9 +30,8 @@ class UsersController < ApplicationController
     if password == password_confirmation
       user = User.new(name: name.capitalize, email: email, role: "customer", password: password)
       if user.save
-        user.save!
         session[:current_user_id] = user.id
-        redirect_to menus_path
+        redirect_to root_path
       else
         flash[:error] = user.errors.full_messages
         redirect_to new_user_path
@@ -90,7 +88,7 @@ class UsersController < ApplicationController
     if user.is_clerk?
       user.destroy
     else
-      flash[:alert] = "you cannot do chang the role of a user without pemission"
+      flash[:alert] = "you cannot do change the role of a user without pemission"
     end
     redirect_to request.referrer
   end

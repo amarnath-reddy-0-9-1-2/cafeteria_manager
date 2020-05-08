@@ -10,19 +10,19 @@ class MenuItemsController < ApplicationController
   end
 
   def create
-        if params[:id]
-          menu = params[:id] == "0" ? Menu.new(name: params[:new_menu_name].capitalize) : Menu.find(params[:id])
-          menu.save
-          menu_item = MenuItem.new(name: params[:name].capitalize, description: params[:description].capitalize, menu_id: menu.id, price: params[:price])
-          if menu.save && menu_item.save
-            flash[:alert] = "Item added successfully!"
-          else
-            flash[:error] = menu_item.errors.full_messages + menu.errors.full_messages
-          end
-        else
-          flash[:alert] = "Please select a menu name"
-        end
-      redirect_to menus_path
+    if params[:id]
+     menu = params[:id] == "0" ? Menu.new(name: params[:new_menu_name].capitalize) : Menu.find(params[:id])
+     menu.save
+     menu_item = MenuItem.new(name: params[:name].capitalize, description: params[:description].capitalize, menu_id: menu.id, price: params[:price])
+     if menu.save && menu_item.save
+       flash[:alert] = "Item added successfully!"
+     else
+       flash[:error] = menu_item.errors.full_messages + menu.errors.full_messages
+     end
+    else
+     flash[:alert] = "Please select a menu name"
+    end
+     redirect_to menus_path
   end
 
   def destroy

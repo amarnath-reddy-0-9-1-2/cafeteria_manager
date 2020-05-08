@@ -3,6 +3,7 @@ class Order < ApplicationRecord
   # rails generate model MenuItems date:datetime user_id:integer delivered_at:datetime
   has_many :order_items, dependent: :destroy
   belongs_to :user
+  validates :address, presence: true, length: { in: 5..25 }
 
   def order_item(menu_item_name)
     order_items.where(menu_item_name: menu_item_name).first
@@ -28,11 +29,11 @@ class Order < ApplicationRecord
     "#{id} #{date} ITEMS:#{order_items.map { |item| item.menu_item_name }.join("--")} TOTAL PRICE:#{total_price} STATUS:++#{status} #{delivered_at}"
   end
 
-  def self.delivered
+  def self.not_under_process
     where.not("status = ? ", "Under Process")
   end
 
-  def self.completed
+  def self.delivered
     where("status= ?", "order_delivered")
   end
 
