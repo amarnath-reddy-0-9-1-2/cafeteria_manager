@@ -15,7 +15,7 @@ class Order < ApplicationRecord
 
   def self.get_sold_item_names
     @names = []
-    all.delivered.order(:id).each do |order|
+    all.delivered.each do |order|
       @names += order.all_menu_item_names
     end
     @names
