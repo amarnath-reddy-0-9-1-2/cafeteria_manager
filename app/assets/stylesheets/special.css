@@ -136,17 +136,29 @@
 }
 
 .Item-analysis {
-  max-width: 500px;
   border-radius: 6px;
-  margin-left: 300px;
   margin-top: 50px;
-  padding-bottom: 30px;
-  padding-top: 30px;
-  margin-bottom: 20px;
+  text-align: center;
 }
 
 .Report-detail {
 
   font-size: 25px;
   margin: 12px;
+}
+
+.Itemwise-analysis {
+  font-size: 21px;
+  padding: 6px;
+}
+
+.Itemwise-sales {
+  width: 450px;
+  margin: 0 auto;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 10px;
+}
+.Sales-head {
+  margin-top: 50px;
 }

@@ -13,6 +13,26 @@ class Order < ApplicationRecord
     order_items.order(:menu_item_name).map { |item| item.menu_item_name }
   end
 
+  def self.get_sold_item_names
+    @names = []
+    all.delivered.order(:id).each do |order|
+      @names += order.all_menu_item_names
+    end
+    @names
+  end
+
+  def self.total_sales_of_item(menu_item_name)
+    price = 0
+    all.delivered.each do |order|
+      order.order_items.all.each do |order_item|
+        if order_item.menu_item_name == menu_item_name
+          price = price + order_item.menu_item_price
+        end
+      end
+    end
+    price
+  end
+
   def get_number_of_items(order_item)
     order_items.where(id: order_item.id).count
   end

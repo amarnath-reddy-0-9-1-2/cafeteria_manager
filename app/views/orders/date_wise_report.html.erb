@@ -15,6 +15,13 @@
           <%count = count + 1%>
         <%end%>
     <%end%>
+    <h3 class ="Sales-head">Sold Items</h3>
+    <div class="Itemwise-sales">
+      <%names = @orders.get_sold_item_names%>
+      <% names.uniq.each do |menu_item| %>
+        <div class="Itemwise-analysis"> <%=menu_item%> x <%=names.count(menu_item)%> = <%=@orders.total_sales_of_item(menu_item)%></div>
+      <%end%>
+    </div>
     <div class="Item-analysis">
       <div class ="Report-detail">Online Orders : <%=@orders.count-count%></div>
       <div class ="Report-detail">Offline Orders : <%=count%></div>
