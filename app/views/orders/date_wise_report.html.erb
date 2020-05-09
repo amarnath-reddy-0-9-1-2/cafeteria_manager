@@ -15,7 +15,7 @@
           <%count = count + 1%>
         <%end%>
     <%end%>
-    <h3 class ="Sales-head">Sold Items</h3>
+    <div class ="Sales-head">Sold Items</div>
     <div class="Itemwise-sales">
       <%names = @orders.get_sold_item_names%>
       <% names.uniq.each do |menu_item| %>
