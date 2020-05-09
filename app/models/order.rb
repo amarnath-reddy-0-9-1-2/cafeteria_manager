@@ -14,11 +14,11 @@ class Order < ApplicationRecord
   end
 
   def self.get_sold_item_names
-    @names = []
+    names = []
     all.delivered.each do |order|
-      @names += order.all_menu_item_names
+      names += order.all_menu_item_names
     end
-    @names
+    names
   end
 
   def self.total_sales_of_item(menu_item_name)
