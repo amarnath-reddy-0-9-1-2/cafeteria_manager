@@ -1,11 +1,11 @@
 <h2 class="Report-heading">Total Sales Report</h2>
 <div class="Sales-report">
+  <h3 class = "report-detail">Total Owners : <%=@users.owners.count%></h3>
+  <h3 class = "report-detail">Total Clerks : <%=@users.clerks.count%></h3>
+  <h3 class = "report-detail">Total Online Customers : <%=@users.customers.count%></h3>
   <h3 class = "report-detail">Total Menus : <%=@menus.count%></h3>
   <h3 class = "report-detail">Total Items : <%=@menu_items.count%></h3>
   <h3 class = "report-detail">Total Orders : <%=@orders.count%></h3>
-  <h3 class = "report-detail">Total Clerks : <%=@users.clerks.count%></h3>
-  <h3 class = "report-detail">Total Online Customers : <%=@users.customers.count%></h3>
-  <h3 class = "report-detail">Total Owners : <%=@users.owners.count%></h3>
   <%price = 0%>
   <%@orders.each { |order| price = price + order.total_price }%>
   <h3 class ="report-detail">Total sales : Rs.<%=price%></h3>
