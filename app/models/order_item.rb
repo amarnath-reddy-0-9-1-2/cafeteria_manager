@@ -29,4 +29,13 @@ class OrderItem < ApplicationRecord
   def self.get_order_item(menu_item_id)
     where("menu_item_id = ?", menu_item_id)
   end
+
+  def self.destroy_invalid_items(id)
+    all.each do |order_item|
+      order = Order.find(order_item.order_id)
+      if order.status == "Under Process" && order_item.menu_item_id == id
+          order_item.destroy
+      end
+    end
+  end
 end
