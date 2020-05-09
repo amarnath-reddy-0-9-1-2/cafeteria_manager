@@ -6,7 +6,7 @@
     <th>Id</th><th>Name</th><th>Email</th><th>No.of orders</th><th>Orders</th><th>Edit</th>
   </tr>
   <% type.each do |type| %>
-      <tr class="User-list" id=<%= type.id %>>
+      <tr>
         <td><%= type.id %></td><td><%= type.name %></td><td><%= type.email %></td><td> <%=type.orders.delivered.count%></td>
         <td>
           <% type.orders.delivered.ids.each do |id| %>

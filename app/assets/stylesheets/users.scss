@@ -34,9 +34,7 @@ td{
   font-size: 18px;
   border-bottom: 1px dotted grey;
 }
-.User-list > td{
-  padding: 10px;
-}
+
 .Header-table{
   text-align: center;
   font-size: 26px;
@@ -44,12 +42,7 @@ td{
   color: white;
   font-weight: bold;
 }
-.User-list >td a{
-  color: blue;
-}
-.User-list >td a:hover{
-  color: red;
-}
+
 @keyframes User{
   0%{border-top: 2px solid tomato;border-bottom: 2px solid tomato;}
   99%{border-top: 2px solid tomato;border-bottom: 2px solid tomato;}

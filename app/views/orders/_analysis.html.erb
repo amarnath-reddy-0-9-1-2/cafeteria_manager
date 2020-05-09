@@ -10,7 +10,7 @@
       <tr>
         <td><%=person.id%></td>
         <td><%=person.name%></td>
-        <td><%=person.orders.get_orders_between(@start_date,@end_date).delivered.count%></td>
+        <td><%=person.orders.delivered.get_orders_between(@start_date,@end_date).count%></td>
         <td>
            <% person.orders.delivered.get_orders_between(@start_date,@end_date).ids.each do |id| %>
               <%= link_to id, "orders/#{id}" %>,
