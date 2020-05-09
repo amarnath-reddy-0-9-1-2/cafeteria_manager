@@ -1,5 +1,5 @@
 
 <div class="Orders">
   <h3 class="Order-title">Your Orders</h3>
-  <%= render partial:"orders", locals: {orders: @current_user.orders.order(id: :desc).not_under_process, mark_as_delivered: false } %>
+  <%= render partial:"orders", locals: {orders: @orders, mark_as_delivered: false } %>
 </div>

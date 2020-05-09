@@ -33,6 +33,16 @@ class Order < ApplicationRecord
     price
   end
 
+  def self.destroy_invalid_items(id)
+    all.each do |order|
+      order.order_items.all.each do |order_item|
+        if order_item.menu_item_id == id
+          order_item.destroy
+        end
+      end
+    end
+  end
+
   def get_number_of_items(order_item)
     order_items.where(id: order_item.id).count
   end

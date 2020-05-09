@@ -4,7 +4,7 @@
         <div class="costum-select">
           <select name="id" onchange=show_box(this.value)>
            <option value="" disabled selected style="color:#7e808c">Select a Menu</option>
-            <% Menu.order(:name).each do |menu|%>
+            <% @menus.each do |menu|%>
               <option value=<%= menu.id %>> <%= menu.name %> </option>
             <% end %>
             <option value=0>Add a Menu</option>

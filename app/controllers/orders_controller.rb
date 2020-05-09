@@ -2,8 +2,9 @@ class OrdersController < ApplicationController
   # created by cmd
   # rails generate controller Orders
   before_action :ensure_owner_logged_in, only: [:report, :date_wise_report, :all_orders]
-  def index
 
+  def index
+    @orders = @current_user.orders.order(id: :desc).not_under_process
   end
 
   def show
@@ -17,6 +18,7 @@ class OrdersController < ApplicationController
 
   def pending_orders
     ensure_owner_or_clerk_logged_in
+    @orders = Order.order(:id).pending_orders
   end
 
   def create
@@ -53,7 +55,7 @@ class OrdersController < ApplicationController
   end
 
   def all_orders
-
+    @orders = Order.order(id: :desc).not_under_process
   end
 
   def rating

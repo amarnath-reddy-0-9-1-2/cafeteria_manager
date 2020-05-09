@@ -8,14 +8,6 @@
   <h3 class = "report-detail">Total Owners : <%=@users.owners.count%></h3>
   <%price = 0%>
   <%@orders.each { |order| price = price + order.total_price }%>
-  <%price_offline = 0%>
-  <%@orders.all.each do |order|%>
-      <% if order.walkin_order? %>
-        <%price_offline = price_offline + order.total_price %>
-      <%end%>
-  <%end%>
-  <h3 class ="report-detail">Offline sales : Rs.<%=price_offline%></h3>
-  <h3 class ="report-detail">Online sales : Rs.<%=(price - price_offline)%></h3>
   <h3 class ="report-detail">Total sales : Rs.<%=price%></h3>
   <div class = "sales_division">
   <div class="sub-head">Get Date Wise Analysis Here</div>

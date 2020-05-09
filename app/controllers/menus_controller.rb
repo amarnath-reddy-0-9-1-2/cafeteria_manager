@@ -32,7 +32,11 @@ class MenusController < ApplicationController
 
   def destroy
     menu = Menu.find(params[:id])
+    if menu.active == true
+      Order.under_process.destroy_all
+    end
     menu.destroy
+    flash[:notice] = "Menu deleted succesfully"
     redirect_to menus_path
   end
 end

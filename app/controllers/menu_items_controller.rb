@@ -15,7 +15,7 @@ class MenuItemsController < ApplicationController
       menu.save
       menu_item = MenuItem.new(name: params[:name].capitalize, description: params[:description].capitalize, menu_id: menu.id, price: params[:price])
       if menu.save && menu_item.save
-        flash[:alert] = "Item added successfully!"
+        flash[:notice] = "Item added successfully!"
       else
         flash[:error] = menu_item.errors.full_messages + menu.errors.full_messages
       end
@@ -26,8 +26,14 @@ class MenuItemsController < ApplicationController
   end
 
   def destroy
-    MenuItem.find(params[:id]).destroy
-    OrderItem.destroy_invalid_items(params[:id])
+    menu_item = MenuItem.find(params[:id])
+    Order.under_process.destroy_invalid_items(menu_item.id)
+    menu = Menu.find(menu_item.menu_id)
+    if menu.menu_items.count == 1
+      menu.destroy
+    end
+    menu_item.destroy
+    flash[:notice] = "Item deleted succesfully"
     redirect_to menus_path
   end
 
@@ -41,7 +47,7 @@ class MenuItemsController < ApplicationController
     menu_item.description = params[:description].capitalize
     menu_item.price = params[:price]
     if menu_item.save
-      OrderItem.destroy_invalid_items(menu_item.id)
+      Order.under_process.destroy_invalid_items(menu_item.id)
       flash[:notice] = "Item updated successfully!"
       redirect_to menus_path
     else
@@ -56,7 +62,7 @@ class MenuItemsController < ApplicationController
     menu_item = MenuItem.find(id)
     menu_item.active = active
     menu_item.save!
-    OrderItem.destroy_invalid_items(menu_item.id)
+    Order.under_process.destroy_invalid_items(menu_item.id)
     redirect_to menus_path
   end
 
