@@ -6,7 +6,7 @@
     <th>Id</th><th>Name</th><th>No.of orders</th><th>Orders</th>
   </tr>
   <%persons.each do |person|%>
-    <%if person.orders.get_orders_between(@start_date,@end_date).delivered.count != 0%>
+    <%if person.orders.delivered.get_orders_between(@start_date,@end_date).count != 0%>
       <tr>
         <td><%=person.id%></td>
         <td><%=person.name%></td>
