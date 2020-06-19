@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   # rails generate model MenuItems date:datetime user_id:integer delivered_at:datetime
   has_many :order_items, dependent: :destroy
   belongs_to :user
-  validates :address, presence: true, length: { in: 5..25 }
+  validates :address, presence: true, length: { in: 5..200 }
 
   def order_item(menu_item_name)
     order_items.where(menu_item_name: menu_item_name).first
