@@ -86,10 +86,11 @@ class UsersController < ApplicationController
     id = params[:id]
     user = User.find(id)
     if user.is_clerk?
-      user.destroy
+      user.role = "customer"
     else
-      flash[:alert] = "you cannot do change the role of a user without pemission"
+      user.role = "clerk"
     end
+    user.save!
     redirect_to request.referrer
   end
 end

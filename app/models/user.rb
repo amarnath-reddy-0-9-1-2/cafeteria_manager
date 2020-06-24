@@ -3,7 +3,6 @@ class User < ApplicationRecord
   has_many :orders
   validates :name, presence: true, length: { in: 3..50 }
   validates :email, presence: true, uniqueness: true
-  validates :password, length: { in: 3..25 }
 
   def is_clerk?
     clerk = role == "clerk" ? true : false

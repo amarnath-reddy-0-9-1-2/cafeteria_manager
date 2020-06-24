@@ -15,12 +15,11 @@
         </td>
         <%if title == "Clerks"%>
           <td>
-            <%= image_tag "trash.png" %>
-            <%= link_to "delete", clerk_update_path(id: type.id), :method => :post %>
+            <%= link_to "Make-User", clerk_update_path(id: type.id), :method => :post %>
           </td>
-        <%else%>
+        <%elsif title == "Customers"%>
           <td>
-            None
+            <%= link_to "Make-Clerk", clerk_update_path(id: type.id), :method => :post %>
           </td>
         <%end%>
       </tr>
