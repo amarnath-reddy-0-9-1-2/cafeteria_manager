@@ -21,6 +21,10 @@
           <td>
             <%= link_to "Make-Clerk", clerk_update_path(id: type.id), :method => :post %>
           </td>
+        <%else%>
+          <td>
+            None
+          </td>
         <%end%>
       </tr>
   <% end %>
