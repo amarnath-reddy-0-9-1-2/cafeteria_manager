@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :ensure_user_logged_in, only: [:create, :new]
   before_action :ensure_owner_logged_in, only: [:index, :clerk, :clerk_update]
+
   def new
     if current_user
       flash[:notice] = "Your'e already signed up user"
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    @current_user = current_user
   end
 
   def index
@@ -43,23 +44,22 @@ class UsersController < ApplicationController
   end
 
   def update
-      user = current_user
-      password = params[:password]
-      password_confirmation = params[:password_confirmation]
-      current_password = params[:current_password]
-      if user.authenticate(current_password)
-        if password == password_confirmation
-          flash[:notice] = "Password updated successfully"
-          user.update!(password: password)
-          redirect_to user_path
-        else
-          flash[:alert] = "New passwords doesnt match"
-          redirect_to edit_user_path
-        end
+    user = current_user
+    if user.authenticate(params[:current_password])
+      user.name = params[:name]
+      user.email = params[:email]
+      user.password = params[:password]
+      if user.save
+        flash[:notice] = "Details updated successfully"
+        redirect_to user_path
       else
-        flash[:alert] = "Your current password is incorrect"
+        flash[:error] = user.errors.full_messages
         redirect_to edit_user_path
       end
+    else
+      flash[:alert] = "Your current password is incorrect"
+      redirect_to edit_user_path
+    end
   end
 
   def clerk
@@ -93,4 +93,5 @@ class UsersController < ApplicationController
     user.save!
     redirect_to request.referrer
   end
+
 end

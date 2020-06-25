@@ -1,23 +1,39 @@
 
 <main class="Update-box">
   <h2 class=Change-text>
-    Change your password
+    Change your Details
   </h2>
-  <%= form_with url: user_path, method: :put,id: "edit_user" do |form| %>
+  <%= form_with url: user_path, method: :put,id: "edit_user",class: "SignUp-content" do |form| %>
+    <%= form.text_field :name,
+                         placeholder: "Name",
+                         value: @current_user.name,
+                         autofocus:"autofocus"
+    %>
+    <br>
+    <%= form.email_field :email,
+                          placeholder: "Email",
+                          value: @current_user.email,
+                          autofocus:"autofocus"
+    %>
+    <br>
+    <h2 class=Pass-change>
+     Enter new password to change
+    </h2>
+    <h2 class=Pass-change>
+     Enter old password otherwise
+    </h2>
     <%= form.password_field :password,
                              placeholder: "Password",
-                             autofocus:"autofocus"
+                             autofocus:"autofocus",
+                             required: true
     %>
-    <br>
-    <%= form.password_field :password_confirmation,
-                             placeholder: "Conifrm new Password",
-                             autofocus: true
-    %>
-    <br>
-    <br>
+    <h2 class="Pass-change">
+     Enter current-password to update
+    </h2>
     <%= form.password_field :current_password,
                              placeholder: "Current Password",
-                             autofocus: "autofocus"
+                             autofocus: "autofocus",
+                             required: true
     %>
     <br>
     <%= form.submit "Update",class:"Change-button" %>
