@@ -1,4 +1,4 @@
-<% if @current_user.is_owner? %>
+<% if @current_user.is_owner? || @current_user.is_clerk? %>
   <div class="WalkIn-costumer">
     <h3>
       You can Order for Walkin costumer
